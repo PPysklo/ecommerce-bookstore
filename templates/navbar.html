@@ -1,0 +1,88 @@
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/navbar_style.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- MDB CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet">
+{% endblock style %}
+
+{% block scripts %}
+<!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+<!-- MDB JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+<script src="{% static 'js/navbar_scripts.js' %}"></script>
+
+{% endblock scripts%}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo.ico' %}" alt="Logo"> <!-- Zamiast napisu "Home" dodano logo -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="bi bi-list text-light fs-4"></i> <!-- Ikona hamburgera -->
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
+                <li class="nav-item text-center mx-2 mx-lg-1">
+                    <a class="nav-link" href="#!">
+                        <div>
+                            <i class="bi bi-envelope fs-4 mb-1"></i> <!-- Ikona koperty -->
+                            <span class="badge rounded-pill badge-notification bg-dark">11</span>
+                        </div>
+                        Link
+                    </a>
+                </li>
+                <li class="nav-item dropdown text-center mx-2 mx-lg-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="text-center"> <!-- Wyśrodkowanie ikony -->
+                            <i class="bi bi-book fs-4 mb-1"></i> <!-- Ikona książki -->
+                        </div>
+                        Kategorie
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Search form -->
+            <form class="d-flex input-group search-form ms-lg-3 my-3 my-lg-0"> <!-- Dodano klasę search-form -->
+                <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-search" type="button">Search</button> <!-- Stylizowany przycisk -->
+            </form>
+
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+                <li class="nav-item text-center mx-2 mx-lg-1">
+                    <a class="nav-link" href="#!">
+                        <div>
+                            <i class="bi bi-bell fs-4 mb-1"></i> <!-- Ikona dzwonka powiadomień -->
+                            <span class="badge rounded-pill badge-notification bg-danger">11</span> <!-- Liczba powiadomień -->
+                        </div>
+                        Messages
+                    </a>
+                </li>
+            </ul>
+
+        </div> <!-- Collapsible wrapper -->
+    </div> <!-- Container wrapper -->
+</nav> <!-- Navbar -->
+
+{% endblock navbar %}

@@ -1,0 +1,53 @@
+.btn {
+    padding: .45rem 1.5rem .35rem;
+  }
+  
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #c471f5;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+}
+
+.navbar-brand img {
+  height: 100px; /* Ustaw wysokość logo na 30px, aby pasowało do ikon */
+  width: auto; /* Ustaw szerokość na auto, aby zachować proporcje */
+}
+
+
+.navbar {
+  padding: 0.25rem 1rem; /* Zmniejszenie paddingu w navbarze */
+}
+
+.dropdown-menu {
+  display: none; /* Ukryj domyślnie */
+  opacity: 0; /* Ustaw przezroczystość na 0 */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Dodaj przejście */
+  transform: translateY(-10px); /* Przesunięcie w górę */
+  padding-top: 20px;
+}
+
+.dropdown.show .dropdown-menu {
+  display: block; /* Pokaż menu po dodaniu klasy show */
+  opacity: 1; /* Ustaw przezroczystość na 1 */
+  transform: translateY(0); /* Przywróć do normalnej pozycji */
+}
+
+.btn-search {
+  background-color: #6f42c1; /* Kolor tła */
+  color: white; /* Kolor tekstu */
+  border: none; /* Bez obramowania */
+  transition: background-color 0.3s ease; /* Efekt przejścia dla koloru tła */
+}
+
+.btn-search:hover {
+  background-color: #9c40de; /* Kolor tła po najechaniu */
+}
+
+.search-form {
+  max-width: 550px; /* Ustaw szerokość paska wyszukiwania (możesz dostosować wartość) */
+}
