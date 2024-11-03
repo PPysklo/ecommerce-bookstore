@@ -16,7 +16,6 @@ class User(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE , null=True, blank=True)
     email = models.EmailField(max_length=500, blank=True, null=True)
-    username = models.CharField(max_length=200, blank=True, null=True)
     city = models.CharField(max_length=200, blank=True, null=True)
     postal_code = models.CharField(max_length=200, blank=True, null=True)
     country = models.CharField(max_length=200, blank=True, null=True)
@@ -24,4 +23,4 @@ class Profile(models.Model):
     
     
     def __str__(self):
-        return str(self.user)
+        return str(self.email)

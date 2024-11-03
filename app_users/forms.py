@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import PasswordInput
+from django.forms import PasswordInput, EmailInput
 
 # from django_recaptcha.fields import ReCaptchaField
 
@@ -13,7 +13,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['email', 'password1', 'password2']
         
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args,**kwargs)
@@ -22,7 +22,8 @@ class CustomUserCreationForm(UserCreationForm):
         for name,field  in self.fields.items():
             if name != 'password':
                 field.widget.attrs.update({'placeholder' : name.capitalize()})
-                
-        self.fields['password1'].widget = PasswordInput(attrs={'placeholder': 'Password'})
-        self.fields['password2'].widget = PasswordInput(attrs={'placeholder': 'Password confirmation'})            
+        
+        self.fields['email'].widget = EmailInput(attrs={'placeholder': ""})
+        self.fields['password1'].widget = PasswordInput(attrs={'placeholder': ''})
+        self.fields['password2'].widget = PasswordInput(attrs={'placeholder': ''})            
 
