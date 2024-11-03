@@ -1,0 +1,107 @@
+body{
+  background: #f3bef5 !important;
+}
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+.section-title {
+  font-size: 2rem;
+  color: #6f42c1;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Odstępy między kartami */
+  justify-content: center; /* Wyśrodkowanie w wierszu */
+}
+
+/* Kolumny dla kart w pięciu kolumnach */
+.col-custom {
+  flex: 0 0 20%; /* Każda kolumna zajmuje 20% szerokości wiersza */
+  max-width: 20%; /* Maksymalna szerokość kolumny */
+  padding: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .col-custom {
+    flex: 0 0 25%; /* Na mniejszych ekranach zmienia się na cztery kolumny */
+    max-width: 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .col-custom {
+    flex: 0 0 33.3333%; /* Na tabletach zmienia się na trzy kolumny */
+    max-width: 33.3333%;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-custom {
+    flex: 0 0 50%; /* Na telefonach zmienia się na dwie kolumny */
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-custom {
+    flex: 0 0 100%; /* Na najmniejszych ekranach jedna kolumna */
+    max-width: 100%;
+  }
+}
+
+
+  
+/* Styl dla kart książek */
+.book-item {
+    background-color: rgb(243, 144, 205);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    width: 100%; /* Szerokość karty w kolumnie */
+    max-width: 250px; /* Maksymalna szerokość karty */
+    height: 400px; /* Wysokość karty */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e0e0e0; /* Ramka wokół karty */
+  }
+  
+/* Sekcja z miejscem na obraz */
+.book-image {
+    width: 100%;
+    height: 200px; /* Ustalona wysokość miejsca na obraz */
+    object-fit: cover; /* Dostosowanie obrazu, aby wypełniał cały obszar bez zniekształceń */
+    border-radius: 8px;
+}
+
+/* Stylowanie informacji o książce */
+.book-info {
+    flex-grow: 1; /* Umożliwia rozciąganie sekcji informacji */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book-title {
+font-size: 1.2rem;
+color: #6f42c1;
+margin-bottom: 0.5rem;
+}
+
+.book-author, .book-price {
+font-size: 1rem;
+color: #555;
+}
+
+/* Przyciski wewnątrz kart */
+.btn {
+padding: .45rem 1.5rem .35rem;
+}

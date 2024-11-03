@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Sekcja z listą książek -->
+<section class="book-list container">
+    <h2 class="section-title">Nasze książki</h2>
+    <div class="row">
+        <!-- Pojedynczy element książki -->
+         {% for book in books %}
+        <div class="col-custom">
+        <div class="book-item">
+            {% if book.image %}
+                <img src="{{ book.image.url }}" alt="Okładka książki" class="book-image">
+            {% else %}
+                <img src="{% static 'images/blank.png' %}" alt=""  class="book-image">
+            {% endif %}
+            <div class="book-info">
+            <h3 class="book-title">{{book.title}}</h3>
+            <p class="book-author">Autor: {{book.author}}</p>
+            <p class="book-price">Cena: {{book.price}}</p>
+            <button class="btn btn-search">Dodaj do koszyka</button>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+        <!-- Kolejne książki można dodać kopiując powyższy blok -->
+    </div>
+</section>
+
+
+{% endblock content %}
