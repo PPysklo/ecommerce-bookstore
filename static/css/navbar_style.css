@@ -51,3 +51,7 @@
 .search-form {
   max-width: 550px; /* Ustaw szerokość paska wyszukiwania (możesz dostosować wartość) */
 }
+
+.login-links{
+  min-width: 217px;
+}
