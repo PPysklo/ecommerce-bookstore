@@ -55,3 +55,23 @@
 .login-links{
   min-width: 217px;
 }
+
+.dropdown-item {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #6f42c1;
+  background-color: #f3bef5;
+  border: 1px solid #6f42c1;
+  border-radius: 0.25rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #6f42c1;
+  color: #ffffff;
+  border-radius: 0.35rem;
+}
