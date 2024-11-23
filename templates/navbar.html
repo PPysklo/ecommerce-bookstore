@@ -69,9 +69,9 @@
             </form>
 
             <!-- Right links -->
-            <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+            <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0 login-links">
                 {% if user.is_authenticated %}
-                    <li class="nav-item text-center mx-2 mx-lg-1">
+                    <li class="nav-item text-center mx-1 mx-lg-1">
                         <a class="nav-link" href="!profile">
                             <div>
                                 <i class="bi bi-person-badge fs-4 mb-1"></i> <!-- Ikona dzwonka powiadomień -->
@@ -80,7 +80,16 @@
                             Profil
                         </a>
                     </li>
-                    <li class="nav-item text-center mx-2 mx-lg-1">
+                    <li class="nav-item text-center mx-1 mx-lg-1">
+                        <a class="nav-link" href="{% url 'app_books:cart' %}">
+                            <div>
+                                <i class="bi bi-cart fs-4 mb-1"></i> <!-- Ikona dzwonka powiadomień -->
+                                <span class="badge rounded-pill badge-notification bg-danger">11</span> <!-- Liczba powiadomień -->
+                            </div>
+                            Koszyk
+                        </a>
+                    </li>
+                    <li class="nav-item text-center mx-1 mx-lg-1">
                         <a class="nav-link" href="{% url 'app_users:logout' %}">
                         <div>
                             <i class="bi bi-box-arrow-right fs-4 mb-1"></i>
