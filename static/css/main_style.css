@@ -66,7 +66,7 @@ body{
     padding: 1rem;
     text-align: center;
     width: 100%; /* Szerokość karty w kolumnie */
-    max-width: 250px; /* Maksymalna szerokość karty */
+    max-width: 300px; /* Maksymalna szerokość karty */
     height: 400px; /* Wysokość karty */
     display: flex;
     flex-direction: column;
@@ -76,9 +76,10 @@ body{
   
 /* Sekcja z miejscem na obraz */
 .book-image {
-    width: 100%;
-    height: 200px; /* Ustalona wysokość miejsca na obraz */
-    object-fit: cover; /* Dostosowanie obrazu, aby wypełniał cały obszar bez zniekształceń */
+    max-width: 200px ;
+    width: auto;
+    height: 220px; 
+    object-fit: cover;
     border-radius: 8px;
 }
 
@@ -105,3 +106,68 @@ color: #555;
 .btn {
 padding: .45rem 1.5rem .35rem;
 }
+
+
+/* Styl dla szczegółowego widoku książki */
+.book-detail {
+  background-color: #f3bef5; /* Zastosowanie koloru tła */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Sekcja obrazu w szczegółach */
+.book-image-detail {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Opis książki */
+.book-description {
+  font-size: 1rem;
+  color: #555;
+  margin: 1rem 0;
+}
+
+/* Styl dla szczegółowego widoku profilu */
+.profile-detail {
+  background-color: #f3bef5; /* Kolor tła */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Informacje profilowe */
+.profile-title {
+  font-size: 2rem;
+  color: #6f42c1;
+  margin-bottom: 1rem;
+}
+
+.profile-info p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+/* Przyciski */
+.btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #6f42c1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #5a3796;
+}
+
+

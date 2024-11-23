@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView
 
 from .models import Books, Tag
 
+
+class BookDetailView(DetailView):
+    model = Books
 
 def home(request):
     
@@ -12,13 +16,14 @@ def home(request):
 def books_list(request):
     books = Books.objects.all()
     tags = Tag.objects.all()
+    category_tag = None
     
-    # if request.GET.get('category'):
-    #     category_name = request.GET['category']
+    if request.GET.get('category'):
+        category_name = request.GET['category']
 
-    #     category_tag = get_object_or_404(Tag, name=category_name)
+        category_tag = get_object_or_404(Tag, name=category_name)
 
-    #     books = books.filter(tags=category_tag)
+        books = books.filter(tags=category_tag)
 
    
   
@@ -41,6 +46,7 @@ def books_list(request):
         # 'cartitems' : cartItems,
         # 'search_query' : search_query,
         # 'custom_range' : custom_range,
+        'category_tag' : category_tag,
     }
     
     return render(request,'app_books/books_list.html', context)
@@ -56,3 +62,4 @@ def cart(request):
         
     # context = {'items':items, 'order': order}
     return render(request, 'shooping_cart.html')
+

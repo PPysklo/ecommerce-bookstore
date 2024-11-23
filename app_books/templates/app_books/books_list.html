@@ -4,19 +4,27 @@
 {% block content %}
 <!-- Sekcja z listą książek -->
 <section class="book-list container">
+    {% if category_tag %}
+    <h2 class="section-title">Książki {{category_tag|lower}}</h2>
+    {% else %}
     <h2 class="section-title">Nasze książki</h2>
+    {% endif %}
     <div class="row">
         <!-- Pojedynczy element książki -->
          {% for book in books %}
         <div class="col-custom">
         <div class="book-item">
             {% if book.image %}
+            <a href="{% url 'app_books:book-detail' pk=book.id %}">
                 <img src="{{ book.image.url }}" alt="Okładka książki" class="book-image">
+            </a>
             {% else %}
+            <a href="{% url 'app_books:book-detail' pk=book.id %}">
                 <img src="{% static 'images/blank.png' %}" alt=""  class="book-image">
+            </a>
             {% endif %}
             <div class="book-info">
-            <h3 class="book-title">{{book.title}}</h3>
+            <h3 class="book-title">{{book.title|truncatechars:15}}</h3>
             <p class="book-author">Autor: {{book.author}}</p>
             <p class="book-price">Cena: {{book.price}}</p>
             <button class="btn btn-search">Dodaj do koszyka</button>

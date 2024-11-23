@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
+
 
 from .forms import CustomUserCreationForm #CaptchaForm
 from .models import Profile
@@ -71,3 +73,8 @@ def logOut(request):
     messages.info(request,'User was logget out')
     
     return redirect('app_books:books-list')
+
+
+def profile(request):
+    profile = get_object_or_404(Profile, user=request.user)
+    return render(request, 'app_users/profile.html', {'profile': profile})
