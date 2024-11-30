@@ -3,3 +3,15 @@
     height: 100vh !important;
     }
     }
+
+.cart-border{
+    background-color: #f3bef5; /* Kolor tła */
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.summary{
+    background-color: #f3bef5; /* Kolor tła */
+
+}

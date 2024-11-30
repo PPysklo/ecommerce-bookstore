@@ -1,0 +1,35 @@
+.pagination {
+    margin-top: 20px; /* Odstęp od książek */
+    height: auto; /* Usuń sztywną wysokość */
+}
+
+.pagination ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+    list-style: none;
+    display: inline;
+}
+
+
+.pagination a:hover {
+    background-color: #fff;
+    color: #ae7fce;
+}
+
+/* Aktywna strona */
+.pagination .page-link.active{
+    font-weight: bold; /* Pogrubienie tekstu */
+    border: 1px solid #5a3796; /* Obramowanie */
+    cursor: default; /* Wyłączenie wskazania linku */
+    pointer-events: none; /* Wyłączenie klikalności */
+}
+
+.page-link{
+    background: rgba(164, 65, 159, 0.7);
+    color: #fff; /* Kolor tekstu dla aktywnej strony */
+}

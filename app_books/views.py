@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
+from django.http import JsonResponse
 
 from .models import Books, Tag
-
+from .utils import search_thing, paginateBooks
 
 class BookDetailView(DetailView):
     model = Books
@@ -25,9 +26,26 @@ def books_list(request):
 
         books = books.filter(tags=category_tag)
 
-   
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        query = request.GET.get('query', '')
+        if query:
+            if len(query) >= 3:
+                things, search_query = search_thing(query, things)
+
+        results = [
+                {
+                    'id': thing.id,
+                    'name': thing.name,
+                    'owner': thing.owner.username,
+                    'location': thing.location.name if thing.location else "",
+                    'image': thing.image_set.first().image.url if thing.image_set.exists() else None
+                }
+                for thing in things
+            ]
+
+        return JsonResponse(results, safe=False)
   
-    # custom_range, books = paginateProjects(request, books, 8)
+    custom_range, books = paginateBooks(request, books, 8)
     
     # if request.user.is_authenticated:
     #     customer = request.user.profile
@@ -45,7 +63,7 @@ def books_list(request):
         'tags' : tags,
         # 'cartitems' : cartItems,
         # 'search_query' : search_query,
-        # 'custom_range' : custom_range,
+        'custom_range' : custom_range,
         'category_tag' : category_tag,
     }
     
