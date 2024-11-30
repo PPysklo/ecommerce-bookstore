@@ -170,4 +170,6 @@ padding: .45rem 1.5rem .35rem;
   background-color: #5a3796;
 }
 
-
+.book-list {
+  margin-bottom: 100px; /* Dodatkowy odstęp na paginację */
+}

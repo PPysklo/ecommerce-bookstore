@@ -1,0 +1,16 @@
+.content {
+    flex: 1; 
+    padding: 20px;
+    color: black !important;
+}
+
+.footer {
+    color: #b97c7c;
+    text-align: center;
+    padding: 10px 20px;
+    z-index: 900;
+}
+
+.bg-body-tertiary {
+    background-color:  #e8b8d9 !important;
+}
