@@ -13,5 +13,63 @@
 
 .summary{
     background-color: #f3bef5; /* Kolor tła */
-
 }
+
+.gradient-border-btn {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #000000 !important;
+    background-color: #f3bef5;
+    border: none;
+    border-radius: 8px; /* Zaokrąglone rogi */
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .gradient-border-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgb(191, 142, 219), rgba(250, 113, 205, 1), rgba(193, 102, 246, 1), rgb(174, 18, 122));
+    background-size: 300% 300%;
+    animation: gradient-animation 3s infinite;
+    z-index: -1;
+    border-radius: 6px; /* Dopasowane do obramowania */
+  }
+  
+  .gradient-border-btn::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background-color: #f3bef5;
+    border-radius: 6px; /* Dopasowane do zaokrąglenia */
+    z-index: -1;
+  }
+  
+  .gradient-border-btn:hover {
+    color: #fff;
+    background-color: rgb(175, 48, 132); /* Jaśniejsze tło po najechaniu */
+    border-radius: 6px; /* Dopasowane do zaokrąglenia */
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

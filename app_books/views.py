@@ -8,10 +8,6 @@ from .utils import search_thing, paginateBooks
 
 class BookDetailView(DetailView):
     model = Books
-
-def home(request):
-    
-    return render(request,'index.html')
     
 
 def books_list(request):

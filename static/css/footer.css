@@ -2,6 +2,8 @@
     flex: 1; 
     padding: 20px;
     color: black !important;
+    
+
 }
 
 .footer {
@@ -9,8 +11,20 @@
     text-align: center;
     padding: 10px 20px;
     z-index: 900;
+    position: sticky !important;
+    top: calc( 100vh - 100px ) !important;
+
 }
 
 .bg-body-tertiary {
     background-color:  #e8b8d9 !important;
+}
+
+.footer-text {
+    color: #1c1919 !important;
+}
+
+.copyright-text{
+    color: #1c1919 !important;
+    background-color: rgba(0, 0, 0, 0.05);
 }
