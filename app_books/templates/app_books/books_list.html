@@ -24,9 +24,9 @@
             </a>
             {% endif %}
             <div class="book-info">
-            <h3 class="book-title">{{book.title|truncatechars:15}}</h3>
-            <p class="book-author">Autor: {{book.author}}</p>
-            <p class="book-price">Cena: {{book.price}}</p>
+            <p class="book-title">{{book.title|truncatechars:30}}</p>
+            <p class="book-author">{{book.author}}</p>
+            <p class="book-price">Cena: {{book.price}} zł</p>
             <button class="btn btn-search">Dodaj do koszyka</button>
             </div>
         </div>

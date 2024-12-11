@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'app_books:books-list' %}">
-            <img src="{% static 'images/logo.ico' %}" alt="Logo"> <!-- Zamiast napisu "Home" dodano logo -->
+            <h2>Home</h2> 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
                 <li class="nav-item text-center mx-2 mx-lg-1">
-                    <a class="nav-link" href="#!">
+                    <a class="nav-link" href="#!" hidden>
                         <div>
                             <i class="bi bi-envelope fs-4 mb-1"></i> <!-- Ikona koperty -->
                             <span class="badge rounded-pill badge-notification bg-dark">11</span>
