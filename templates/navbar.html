@@ -69,9 +69,9 @@
             </ul>
 
             <!-- Search form -->
-            <form class="d-flex input-group search-form ms-lg-3 my-3 my-lg-0"> <!-- Dodano klasę search-form -->
-                <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-search" type="button">Search</button> <!-- Stylizowany przycisk -->
+            <form class="d-flex input-group search-form ms-lg-3 my-3 my-lg-0" role="search" method="get" action="{% url 'app_books:books-list' %}" > 
+                <input type="search" class="form-control me-2" id="search-query" value="{{search_query}}" placeholder="Wyszukaj" aria-label="Search" name="search_query"/>
+                <button class="btn btn-search" type="submit"><i class="bi bi-search"></i></button> 
             </form>
 
             <!-- Right links -->
