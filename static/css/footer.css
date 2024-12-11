@@ -2,9 +2,18 @@
     flex: 1; 
     padding: 20px;
     color: black !important;
+    margin-bottom: -100px;
     
 
 }
+
+html, body {
+    margin: 0; /* Usunięcie domyślnych marginesów */
+    padding: 0; /* Usunięcie domyślnych odstępów */
+    min-width: 100%; /* Szerokość na 100% */
+    min-height: 100%; /* Wysokość na 100% */
+}
+
 
 .footer {
     color: #b97c7c;
@@ -13,7 +22,7 @@
     z-index: 900;
     position: sticky !important;
     top: calc( 100vh - 100px ) !important;
-
+    margin-bottom: -100px;
 }
 
 .bg-body-tertiary {

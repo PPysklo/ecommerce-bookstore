@@ -4,15 +4,16 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Books, Tag
 
 
-def search_thing(search_query):
+def search_thing(search_query, books=None):
 
     tag = Tag.objects.filter(name__icontains=search_query)
     
-    books = Books.objects.filter(
-        Q(name__icontains=search_query) |
-        Q(description__icontains=search_query) |
-        Q(tags__in=tag)
-    )
+    if books is not None:
+        books = Books.objects.filter(
+            Q(title__icontains=search_query) |
+            Q(tags__in=tag) |
+            Q(author__icontains=search_query)
+        ).distinct()
 
     return books, search_query
 

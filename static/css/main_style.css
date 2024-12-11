@@ -1,5 +1,7 @@
 body{
   background: #f3bef5 !important;
+  min-width: 100%; /* Szerokość na 100% */
+  min-height: 100%; /* Wysokość na 100% */
 }
 .container {
     max-width: 1200px;
@@ -137,7 +139,6 @@ padding: .45rem 1.0rem .35rem;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-
 
 /* Informacje profilowe */
 .profile-title {
