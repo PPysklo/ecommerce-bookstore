@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import PasswordInput, EmailInput
 
-# from django_recaptcha.fields import ReCaptchaField
+from .models import Profile
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -25,5 +25,11 @@ class CustomUserCreationForm(UserCreationForm):
         
         self.fields['email'].widget = EmailInput(attrs={'placeholder': ""})
         self.fields['password1'].widget = PasswordInput(attrs={'placeholder': ''})
-        self.fields['password2'].widget = PasswordInput(attrs={'placeholder': ''})            
+        self.fields['password2'].widget = PasswordInput(attrs={'placeholder': ''})
+        
+        
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = "__all__"            
 
