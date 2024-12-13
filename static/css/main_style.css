@@ -138,19 +138,31 @@ padding: .45rem 1.0rem .35rem;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10rem;
 }
 
 /* Informacje profilowe */
 .profile-title {
-  font-size: 2rem;
-  color: #6f42c1;
+  font-size: 3rem;
+  color: #b242c1;
   margin-bottom: 1rem;
 }
 
+
 .profile-info p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #555;
   margin: 0.5rem 0;
+  padding-top: 1rem;
+}
+
+#btn-edit {
+  margin-top: 3rem;
+  background-color: #a842c1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 /* Przyciski */
@@ -160,7 +172,7 @@ padding: .45rem 1.0rem .35rem;
 }
 
 .btn-primary {
-  background-color: #6f42c1;
+  background-color: #875cd6;
   color: #fff;
   border: none;
   border-radius: 5px;

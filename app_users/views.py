@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
-
-from .forms import CustomUserCreationForm #CaptchaForm
+from .forms import CustomUserCreationForm, ProfileForm
 from .models import Profile
 # from .models import User
 User = get_user_model()
@@ -78,3 +78,23 @@ def logOut(request):
 def profile(request):
     profile = get_object_or_404(Profile, user=request.user)
     return render(request, 'app_users/profile.html', {'profile': profile})
+
+@login_required(login_url="app_user:login")
+def edit_profile(request, pk):
+    profile = get_object_or_404(Profile, id=pk)
+    
+    form = ProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+
+        if form.is_valid():
+
+            profile = form.save(commit=False)
+            profile.save()
+
+
+        return redirect('app_users:profile')
+
+    context = {'form': form}
+    return render(request, 'app_users/profile_edit.html', context)
