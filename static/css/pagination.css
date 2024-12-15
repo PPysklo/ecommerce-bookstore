@@ -1,6 +1,7 @@
 .pagination {
     margin-top: 20px; /* Odstęp od książek */
     height: auto; /* Usuń sztywną wysokość */
+    max-height: 70px;
 }
 
 .pagination ul {

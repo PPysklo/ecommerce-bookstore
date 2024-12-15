@@ -1,6 +1,7 @@
 @media (min-width: 1025px) {
     .h-custom {
     height: 100vh !important;
+    margin-bottom: 12rem;
     }
     }
 
@@ -73,3 +74,48 @@
     }
   }
   
+#quantity-count {
+  margin-left: 3rem;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.empty-cart-message {
+  text-align: center;
+  color: black; /* Stonowany różowy odcień pasujący do stylu */
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  background-color: #f3bef5; /* Kolor tła */
+  padding: 1rem;
+
+}
+
+
+.empty-cart-container {
+  margin: 1rem 1rem ;
+  text-align: center;
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: 1px 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.back-to-products {
+  display: inline-block;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #bf8adb; /* Kolor przycisku zgodny z motywem */
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-to-products:hover {
+  background-color: #a75cb5; /* Jaśniejszy odcień przycisku na hover */
+  color: #ffffff;
+}
