@@ -27,7 +27,7 @@
             <p class="book-title">{{book.title|truncatechars:30}}</p>
             <p class="book-author">{{book.author}}</p>
             <p class="book-price">Cena: {{book.price}} zł</p>
-            <button class="btn btn-search">Dodaj do koszyka</button>
+            <button data-book="{{book.id}}" data-action="add" class="btn btn-search btn-addItem">Dodaj do koszyka</button>
             </div>
         </div>
         </div>
@@ -39,64 +39,9 @@
 
 {% endblock content %}
 
-
-
+{% block scripts %}
+<script src="{% static 'js/cart.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Ky0wXR1W7b3M3hQEcyZwX5KNiYpHjQ8kFprv8+u0rK+vauus4mKcxZzK7U93vb4Q"
         crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        function fetchData(query='') {
-            $.ajax({
-                url: "{% url 'app_books:books-list' %}",
-                data: {
-                    'query': query
-                },
-                success: function(data) {
-                    $('#gridRow').empty();
-                    if (data.length > 0) {
-                        data.forEach(function(item) {
-                            let imageHtml = item.image && item.image !== "" 
-                                ? `<img src="${item.image}" class="book-image" alt="Okładka książki">` 
-                                : '<img src="" class="book-image" alt="Brak okładki">';
-
-                            let bookHtml = `
-                                <div class="col-custom">
-                                    <div class="book-item">
-                                        <a href="/book/${item.id}">
-                                            ${imageHtml}
-                                        </a>
-                                        <div class="book-info">
-                                            <p class="book-title">${item.title}</p>
-                                            <p class="book-author">${item.author}</p>
-                                            <p class="book-price">Cena: ${item.price} zł</p>
-                                            <button class="btn btn-search">Dodaj do koszyka</button>
-                                        </div>
-                                    </div>
-                                </div>`;
-                            $('#gridRow').append(bookHtml);
-                        });
-                    } else {
-                        $('#gridRow').append('<div class="col-12 text-center"><h1 style="opacity: 0.5;">Nie znaleziono książek</h1></div>');
-                    }
-                }
-            });
-        }
-
-        $('#search-query').on('input', function() {
-            let query = $(this).val();
-            if (query.length >= 3) {
-                fetchData(query);
-            } else if (query.length === 0) {
-                fetchData(); // fetch all things when input is cleared
-            }
-        });
-
-        // Initial fetch to load all items on page load
-        fetchData();
-    });
-</script>
-
-
+{% endblock scripts %}

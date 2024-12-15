@@ -30,10 +30,50 @@
 
     {% include 'footer.html' %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'js/footer_script.js' %}"></script>
+
     {% block scripts %}
     {% endblock scripts%}
 
 </body>
 
 </html>
+
+
+{% for message in messages %}
+    {% if message.tags == 'info' %}
+        <!-- sweetalert js -->
+        <script>
+            var m = "Wylogowano";
+            Swal.fire({
+            position: "centre",
+            icon: 'success',
+            text: m,
+            showConfirmButton: false,
+            color: 'White',
+            background: 'None',
+            timer: 1000,
+            showClass: {
+                        popup: 'my-icon'                     
+                        },
+                });
+        </script> 
+    {% elif message.tags == 'success'%}
+        <script>
+            var m = "Pomyślnie zalogowano";
+            Swal.fire({
+            position: "centre",
+            icon: "success",
+            title: m,
+            showConfirmButton: false,
+            color: 'White',
+            background: "None",
+            timer: 1000,
+            showClass: {
+                        popup: 'my-icon'                     
+                        },
+                });
+    </script> 
+    {% endif %}
+{% endfor %}

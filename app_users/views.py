@@ -34,6 +34,8 @@ def loginRegister(request):
 
         if user is not None:
             login(request, user)
+            messages.success(request, message="zalogowano")
+
             return redirect(request.GET.get('next', 'app_books:books-list'))
         else:
             messages.error(request, 'Username or password is incorrect.')
@@ -43,11 +45,10 @@ def loginRegister(request):
     elif request.method == "POST" and 'register' in request.POST:
         
         if request.method == "POST":
-            print(1)
             form = CustomUserCreationForm(request.POST)
             # captcha = CaptchaForm(request.POST)
             if form.is_valid(): #and captcha.is_valid():
-                print(2)
+
                 user = form.save(commit=False)
                 user.email = user.email.lower()
                 user.save()

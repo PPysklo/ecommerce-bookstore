@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 {% endblock styles %}
 
+{% block scripts %}
+
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+
+{% endblock %}
 
 {% block content %}
 
@@ -18,60 +23,43 @@
               <thead>
                 <tr>
                   <th scope="col" class="h5">Koszyk</th>
-                  <th scope="col">Wydanie</th>
-                  <th scope="col">Ilość</th>
+                  <th scope="col" style="margin-left: 3rem;">Ilość</th>
                   <th scope="col">Cena</th>
                 </tr>
               </thead>
               <tbody>
+                {% if items %}
+                {% for item in items %}
                 <tr>
                   <th scope="row">
                     <div class="d-flex align-items-center">
                       <img src="https://i.imgur.com/2DsA49b.webp" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
                       <div class="flex-column ms-4">
-                        <p class="mb-2">Thinking, Fast and Slow</p>
-                        <p class="mb-0">Daniel Kahneman</p>
+                        <p class="mb-2">{{item.book.title}}</p>
+                        <p class="mb-0">{{item.book.author}}</p>
                       </div>
                     </div>
                   </th>
-                  <td class="align-middle">Książka</td>
                   <td class="align-middle">
                     <div class="d-flex flex-row align-items-center">
-                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                        <i class="fas fa-minus"></i>
+                      <p id="quantity-count">{{item.quantity}}</p>
+                      <button data-book="{{item.book.id}}" data-action="add" class="btn btn-link px-2 btn-addItem">
+                        <i class="bi bi-arrow-up"></i>
                       </button>
-                      <input type="number" min="0" name="quantity" value="2" class="form-control form-control-sm text-center" style="width: 50px;">
-                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td class="align-middle">75,00 zł</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="border-bottom-0">
-                    <div class="d-flex align-items-center">
-                      <img src="https://i.imgur.com/Oj1iQUX.webp" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
-                      <div class="flex-column ms-4">
-                        <p class="mb-2">Homo Deus: A Brief History of Tomorrow</p>
-                        <p class="mb-0">Yuval Noah Harari</p>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="align-middle border-bottom-0">Książka</td>
-                  <td class="align-middle border-bottom-0">
-                    <div class="d-flex flex-row align-items-center">
-                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                      <input type="number" min="0" name="quantity" value="1" class="form-control form-control-sm text-center" style="width: 50px;">
-                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                        <i class="fas fa-plus"></i>
+                      <button data-book="{{item.book.id}}" data-action="remove" class="btn btn-link px-2 btn-addItem">
+                        <i class="bi bi-arrow-down"></i>
                       </button>
                     </div>
                   </td>
-                  <td class="align-middle border-bottom-0">80,00 zł</td>
+                  <td class="align-middle">{{item.book.price}} zł/szt</td>
                 </tr>
+                {% endfor %}
+                {% else %}
+                  <div class="empty-cart-container">
+                    <p class="empty-cart-message">Twój koszyk jest pusty</p>
+                    <a href="{% url 'app_books:books-list' %}" class="back-to-products">Wróć do produktów</a>
+                  </div>
+                {% endif %}
               </tbody>
             </table>
           </div>
@@ -107,22 +95,26 @@
   
                 <div class="col-lg-4 col-xl-3">
                   <div class="d-flex justify-content-between mb-2">
+                    <p class="mb-0">Ilość produktów</p>
+                    <p class="mb-0">{{order.get_cart_items}}</p>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
                     <p class="mb-0">Wartość zamównienia</p>
-                    <p class="mb-0">155,00 zł</p>
+                    <p class="mb-0">{{order.get_cart_total}} zł</p>
                   </div>
                   <div class="d-flex justify-content-between mb-2">
                     <p class="mb-0">Przesyłka</p>
-                    <p class="mb-0">15.00 zł</p>
+                    <p class="mb-0"><b>W CENIE!</b></p>
                   </div>
                   <hr class="my-4">
                   <div class="d-flex justify-content-between mb-4">
                     <p class="mb-0">Cena całkowita</p>
-                    <p class="mb-0">170,00 zł</p>
+                    <p class="mb-0">{{order.get_cart_total}} zł</p>
                   </div>
                   <button class="btn btn-lg btn-block gradient-border-btn">
                     <div class="d-flex justify-content-between">
                       <span>Zapłać</span>
-                      <span>170,00 zł</span>
+                      <span>{{order.get_cart_total}} zł</span>
                     </div>
                   </button>
                 </div>

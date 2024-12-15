@@ -89,8 +89,10 @@
                     <li class="nav-item text-center mx-1 mx-lg-1">
                         <a class="nav-link" href="{% url 'app_books:cart' %}">
                             <div>
-                                <i class="bi bi-cart fs-4 mb-1"></i> <!-- Ikona dzwonka powiadomień -->
-                                <span class="badge rounded-pill badge-notification bg-danger">11</span> <!-- Liczba powiadomień -->
+                                <i class="bi bi-cart fs-4 mb-1"></i>
+                                {% if cartitems != 0 %}
+                                <span class="badge rounded-pill badge-notification bg-danger">{{ cartitems }}</span> <!-- Liczba powiadomień -->
+                                {% endif %}
                             </div>
                             Koszyk
                         </a>
