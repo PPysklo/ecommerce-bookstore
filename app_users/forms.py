@@ -31,5 +31,5 @@ class CustomUserCreationForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = "__all__"            
+        fields = ['email', 'city', 'address', 'postal_code', 'country', 'telephone']          
 

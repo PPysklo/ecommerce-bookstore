@@ -1,12 +1,15 @@
 import json
+import datetime
 
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
+from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Books, Tag, Order, OrderItem
+from .models import Books, Tag, Order, OrderItem, ShippingAddress
 from .utils import search_thing, paginateBooks
 
 class BookDetailView(DetailView):
@@ -55,6 +58,8 @@ def books_list(request):
 # SHOOPING CART SECTION
 
 def cart(request):
+    tags = Tag.objects.all()
+    
     if request.user.is_authenticated:
         customer = request.user.profile
         order, created = Order.objects.get_or_create(customer=customer, complete = False)
@@ -63,7 +68,7 @@ def cart(request):
         items = []
         order = {'get_cart_total':0 , 'get_cart_items':0}
         
-    context = {'items':items, 'order': order}
+    context = {'items':items, 'order': order, 'tags':tags}
     return render(request, 'shooping_cart.html', context)
 
 def updateitem(request):
@@ -101,4 +106,36 @@ def checkout(request):
         order = {'get_cart_total':0 , 'get_cart_items':0, 'shipping': True}
 
     context = {'items':items, 'order': order}
-    return render(request, 'stuff/checkout.html', context)
+    return render(request, 'checkout.html', context)
+
+def processOrder(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+    
+    if request.user.is_authenticated:
+        customer = request.user.profile
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == order.get_cart_total:
+            order.complete = True
+
+        if all([customer.address, customer.city, customer.country, customer.postal_code]):
+                
+            ShippingAddress.objects.create(
+                customer=customer,
+                order=order,
+                address=customer.address,
+                city=customer.city,
+                country=customer.country,
+                postal_code=customer.postal_code,
+            )
+        else:
+            return JsonResponse({"error":"Error"})
+
+        order.save()
+    else:
+        print("User is not logged in.")
+
+    return JsonResponse("Payment submitted", safe=False)
