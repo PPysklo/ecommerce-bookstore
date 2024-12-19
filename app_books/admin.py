@@ -5,4 +5,5 @@ from .models import *
 admin.site.register(Books)
 admin.site.register(Tag)
 admin.site.register(Order)
+admin.site.register(OrderItem)
 

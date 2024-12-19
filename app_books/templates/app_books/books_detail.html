@@ -1,4 +1,11 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block scripts %}
+
+<script src="{% static 'js/cart.js' %}"></script>
+
+{% endblock scripts %}
 
 {% block content %}
 
@@ -19,13 +26,14 @@
                {{object.description}}
               </p>
               <h3 class="book-price">Cena: {{object.price}}</h3>
-              <button class="btn btn-primary">Dodaj do koszyka</button>
+              <button data-book="{{object.id}}" data-action="add" class="btn btn-search btn-addItem">Dodaj do koszyka</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
 
 {% endblock content %}
   

@@ -134,20 +134,18 @@ padding: .45rem 1.0rem .35rem;
 
 /* Styl dla szczegółowego widoku profilu */
 .profile-detail {
-  background-color: #f3bef5; /* Kolor tła */
+  background-color: #f3bef5;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 10rem;
 }
 
-/* Informacje profilowe */
 .profile-title {
   font-size: 3rem;
   color: #b242c1;
   margin-bottom: 1rem;
 }
-
 
 .profile-info p {
   font-size: 1.3rem;
@@ -157,12 +155,49 @@ padding: .45rem 1.0rem .35rem;
 }
 
 #btn-edit {
+  max-width: 15rem;
   margin-top: 3rem;
   background-color: #a842c1;
   color: #fff;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+}
+
+.mailbox {
+  margin-top: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.mailbox-title {
+  font-size: 2rem;
+  color: #4a4a4a;
+  margin-bottom: 1rem;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+}
+
+.profile-detail .row > [class*="col-md-"] {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Przyciski */
