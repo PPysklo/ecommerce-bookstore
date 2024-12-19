@@ -3,27 +3,53 @@
 {% block content %}
 
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="profile-detail">
-          <div class="row">
-            <div class="col-md-8">
-              <h1 class="profile-title">Profil użytkownika</h1>
-              <div class="profile-info">
-                <p><strong>Email:</strong> {{ profile.email|default:"Nie uzupełniono" }}</p>
-                <p><strong>Miasto:</strong> {{ profile.city|default:"Nie uzupełniono" }}</p>
-                <p><strong>Adres:</strong> {{ profile.address|default:"Nie uzupełniono" }}</p>
-                <p><strong>Kod pocztowy:</strong> {{ profile.postal_code|default:"Nie uzupełniono" }}</p>
-                <p><strong>Kraj:</strong> {{ profile.country|default:"Nie uzupełniono" }}</p>
-                <p><strong>Telefon:</strong> {{ profile.telephone|default:"Nie uzupełniono" }}</p>
-            </div>            
-            <a id="btn-edit" class="btn btn-primary" href="{% url 'app_users:edit-profile' pk=profile.id %}">Edytuj profil</a>
-            </div>
+  <div class="row justify-content-center">
+      <div class="col-md-10">
+          <div class="profile-detail">
+              <div class="row">
+                  <div class="col-md-6">
+                      <h1 class="profile-title">Profil użytkownika</h1>
+                      <div class="profile-info">
+                          <p><strong>Email:</strong> {{ profile.email|default:"Nie uzupełniono" }}</p>
+                          <p><strong>Miasto:</strong> {{ profile.city|default:"Nie uzupełniono" }}</p>
+                          <p><strong>Adres:</strong> {{ profile.address|default:"Nie uzupełniono" }}</p>
+                          <p><strong>Kod pocztowy:</strong> {{ profile.postal_code|default:"Nie uzupełniono" }}</p>
+                          <p><strong>Kraj:</strong> {{ profile.country|default:"Nie uzupełniono" }}</p>
+                          <p><strong>Telefon:</strong> {{ profile.telephone|default:"Nie uzupełniono" }}</p>
+                      </div>            
+                      <a id="btn-edit" class="btn btn-primary" href="{% url 'app_users:edit-profile' pk=profile.id %}">Edytuj profil</a>
+                  </div>
+                  <div class="col-md-4">
+                    <h2 class="mailbox-title">Twoje zamówienia</h2>
+                      <div class="mailbox">
+                        <ul class="order-list">
+                          {% for order in orders %}
+                            {% if order.orderitem_set.all %}
+                              <li class="order-item">
+                                  <strong>Zamówienie #{{ order.id }}</strong><br>
+                                  {% for item in order.orderitem_set.all %}
+                                      Książka: {{ item.book.title }}<br>
+                                      Ilość: {{ item.quantity }}<br>
+                                      Cena: {{ item.get_total }}<br>
+                                  {% endfor %}
+                                  Status:{% if order.order.complete == "True" %} 
+                                    Wysłano
+                                    {% else %}
+                                    W trakcie realizacji
+                                    {% endif %}
+                              </li>
+                              {% endif %}
+                          {% empty %}
+                              <li>Brak zamówień</li>
+                          {% endfor %}
+                      </ul>
+                      
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
-  
+</div>
 
 {% endblock content %}

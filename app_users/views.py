@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import CustomUserCreationForm, ProfileForm
 from .models import Profile
-from app_books.models import Tag
+from app_books.models import Tag, OrderItem, Order
 # from .models import User
 User = get_user_model()
 
@@ -78,10 +78,20 @@ def logOut(request):
 
 @login_required(login_url="app_user:login")
 def profile(request):
-    tags = Tag.objects.all()
+    user = request.user
+    profile = get_object_or_404(Profile, user=user)
     
-    profile = get_object_or_404(Profile, user=request.user)
-    return render(request, 'app_users/profile.html', {'profile': profile, 'tags':tags})
+    tags = Tag.objects.all()
+    orders = Order.objects.filter(customer=profile).prefetch_related('orderitem_set')
+    # orders = OrderItem.objects.filter(order__in=order)
+    
+    context = {
+        'profile': profile, 
+        'tags': tags,
+        'orders': orders
+    }
+    
+    return render(request, 'app_users/profile.html', context)
 
 @login_required(login_url="app_user:login")
 def edit_profile(request, pk):

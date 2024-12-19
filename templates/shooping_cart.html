@@ -37,7 +37,11 @@
                 <tr>
                   <th scope="row">
                     <div class="d-flex align-items-center">
+                      {% if item.book.image.url %}
                       <img src="{{ item.book.image.url }}" alt="{% static 'images/blank.png' %}" class="img-fluid rounded-3" style="width: 120px;">
+                      {% else %}
+                      <img src="{% static 'images/blank.png' %}" alt="" class="img-fluid rounded-3" style="width: 120px;">
+                      {% endif %}
                       <div class="flex-column ms-4">
                         <p class="mb-2">{{item.book.title}}</p>
                         <p class="mb-0">{{item.book.author}}</p>

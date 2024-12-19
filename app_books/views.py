@@ -14,6 +14,13 @@ from .utils import search_thing, paginateBooks
 
 class BookDetailView(DetailView):
     model = Books
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        
+        return context
+
 
 def books_list(request):
     books = Books.objects.all()
