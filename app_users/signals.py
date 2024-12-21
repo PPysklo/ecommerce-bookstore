@@ -9,7 +9,6 @@ def createProfile(sender, instance, created, **kwargs):
         user = instance
         profile = Profile.objects.create(
             user=user,
-            username=user.username,
             email=user.email,
         )
         

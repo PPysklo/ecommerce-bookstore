@@ -221,3 +221,15 @@ padding: .45rem 1.0rem .35rem;
 .book-list {
   margin-bottom: 100px; /* Dodatkowy odstęp na paginację */
 }
+
+
+#empty-his{
+  margin-top: 2rem;
+  text-align: center;
+  color: black; /* Stonowany różowy odcień pasujący do stylu */
+  font-size: 1.0rem;
+  font-weight: bold;
+  background-color: #f3bef5; /* Kolor tła */
+  padding: 1rem;
+
+}

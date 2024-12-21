@@ -24,7 +24,7 @@
                       <div class="mailbox">
                         <ul class="order-list">
                           {% for order in orders %}
-                            {% if order.orderitem_set.all %}
+                            {% if order.orderitem_set.all and order.transaction_id %}
                               <li class="order-item">
                                   <strong>Zamówienie #{{ order.id }}</strong><br>
                                   {% for item in order.orderitem_set.all %}
@@ -38,9 +38,9 @@
                                     W trakcie realizacji
                                     {% endif %}
                               </li>
+                              {% else %}
+                              <li id="empty-his">Brak historii zamówień</li>
                               {% endif %}
-                          {% empty %}
-                              <li>Brak zamówień</li>
                           {% endfor %}
                       </ul>
                       

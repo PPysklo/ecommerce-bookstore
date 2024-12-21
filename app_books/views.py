@@ -8,19 +8,13 @@ from django.views.generic import DetailView
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ValidationError
 
 from .models import Books, Tag, Order, OrderItem, ShippingAddress
 from .utils import search_thing, paginateBooks
 
 class BookDetailView(DetailView):
     model = Books
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tags'] = Tag.objects.all()
-        
-        return context
-
 
 def books_list(request):
     books = Books.objects.all()
@@ -65,7 +59,6 @@ def books_list(request):
 # SHOOPING CART SECTION
 
 def cart(request):
-    tags = Tag.objects.all()
     
     if request.user.is_authenticated:
         customer = request.user.profile
@@ -75,7 +68,9 @@ def cart(request):
         items = []
         order = {'get_cart_total':0 , 'get_cart_items':0}
         
-    context = {'items':items, 'order': order, 'tags':tags}
+    context = {'items':items, 
+               'order': order, 
+               }
     return render(request, 'shooping_cart.html', context)
 
 def updateitem(request):
@@ -83,7 +78,6 @@ def updateitem(request):
     productId = data['bookId']
     action = data['action']
 
-    
     customer = request.user.profile
     book = Books.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete = False)
@@ -101,24 +95,11 @@ def updateitem(request):
 
     return JsonResponse('Item was added', safe=False)
 
-@csrf_exempt  
-def checkout(request):
-    
-    if request.user.is_authenticated:
-        customer = request.user.profile
-        order, created = Order.objects.get_or_create(customer=customer, complete = False)
-        items = order.orderitem_set.all()
-    else:
-        items = []
-        order = {'get_cart_total':0 , 'get_cart_items':0, 'shipping': True}
-
-    context = {'items':items, 'order': order}
-    return render(request, 'checkout.html', context)
-
+@csrf_exempt
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
-    
+
     if request.user.is_authenticated:
         customer = request.user.profile
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -126,23 +107,42 @@ def processOrder(request):
         order.transaction_id = transaction_id
 
         if total == order.get_cart_total:
-            order.complete = True
+            try:
+                missing_books = []
+                for item in order.orderitem_set.all():
+                    try:
+                        item.clean()
+                    except ValidationError as e:
+                        missing_books.append(item.book.title)
+                if missing_books:
+                    error_message = "Nie wystarczające stany magazynowe dla:\n\n " + "\n".join(missing_books)
 
-        if all([customer.address, customer.city, customer.country, customer.postal_code]):
-                
-            ShippingAddress.objects.create(
-                customer=customer,
-                order=order,
-                address=customer.address,
-                city=customer.city,
-                country=customer.country,
-                postal_code=customer.postal_code,
-            )
+                    return JsonResponse({'error': error_message , "missing_books": missing_books}, status=400)
+                for item in order.orderitem_set.all():
+                    item.book.stock -= item.quantity
+                    item.book.save()
+                messages.success(request, 'Order placed successfully!')
+
+                if all([customer.address, customer.city, customer.country, customer.postal_code]):
+                    ShippingAddress.objects.create(
+                        customer=customer,
+                        order=order,
+                        address=customer.address,
+                        city=customer.city,
+                        country=customer.country,
+                        postal_code=customer.postal_code,
+                    )
+                else:
+                    return JsonResponse({"error": "Error"})
+
+                order.save()
+            except ValidationError as e:
+                messages.error(request, str(e))
+                return JsonResponse({'error': str(e)}, status=400)
         else:
-            return JsonResponse({"error":"Error"})
-
-        order.save()
+            return JsonResponse({"error": "Total mismatch"}, status=400)
     else:
-        print("User is not logged in.")
+        messages.error(request, 'You are not logged in!')
+        return JsonResponse("You are not logged in!", safe=False)
 
     return JsonResponse("Payment submitted", safe=False)

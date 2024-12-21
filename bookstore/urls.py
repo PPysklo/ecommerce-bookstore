@@ -43,3 +43,5 @@ urlpatterns += static(S.MEDIA_URL,
                         document_root=S.MEDIA_ROOT)
 urlpatterns += static(S.STATIC_URL,
                         document_root=S.STATIC_ROOT)
+
+admin.site.site_header = f'Admin panel'

@@ -65,9 +65,6 @@ def loginRegister(request):
     context = {'form': form} #,'captcha':captcha}
             
     return render(request, 'app_users/login_register.html', context)
-            
-
-
 
 def logOut(request):
     
@@ -81,13 +78,13 @@ def profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
     
-    tags = Tag.objects.all()
+    # tags = Tag.objects.all()
     orders = Order.objects.filter(customer=profile).prefetch_related('orderitem_set')
     # orders = OrderItem.objects.filter(order__in=order)
     
     context = {
         'profile': profile, 
-        'tags': tags,
+        # 'tags': tags,
         'orders': orders
     }
     
