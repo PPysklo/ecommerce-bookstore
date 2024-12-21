@@ -2,7 +2,10 @@ import uuid
 
 from app_users.models import Profile
 
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
@@ -15,6 +18,7 @@ class Books(models.Model):
     image = models.ImageField(upload_to='images/',null= True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, 
                           primary_key=True, editable=False)
+    stock = models.PositiveIntegerField(default=0) 
     
     def __str__(self):
         return self.title
@@ -78,15 +82,22 @@ class Order(models.Model):
         return all_items
     
 class OrderItem(models.Model):
-    book = models.ForeignKey(Books, on_delete = models.SET_NULL, null = True)
-    order = models.ForeignKey(Order, on_delete = models.SET_NULL, null = True)
-    quantity = models.IntegerField(default = 0, null = True, blank = True)
-    date_added = models.DateTimeField(auto_now_add = True)
-    
+    book = models.ForeignKey(Books, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Numer zamówienia: {str(self.order.id)}"
+
     @property
     def get_total(self):
         total = self.book.price * self.quantity
         return total
+
+    def clean(self):
+        if self.book and self.quantity > self.book.stock:
+            raise ValidationError(f"Not enough stock for {self.book.title}. Available: {self.book.stock}, requested: {self.quantity}")
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Profile, on_delete = models.SET_NULL, null = True, blank = True)
@@ -101,3 +112,15 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return f"{self.order}----{self.address}"
 
+@receiver(post_save, sender=Order)
+def update_stock_on_order_complete(sender, instance, **kwargs):
+    if instance.complete:
+        for item in instance.orderitem_set.all():
+            item.book.stock -= item.quantity
+            item.book.save()
+
+@receiver(post_delete, sender=OrderItem)
+def update_stock_on_delete(sender, instance, **kwargs):
+    if instance.order.complete:
+        instance.book.stock += instance.quantity
+        instance.book.save()

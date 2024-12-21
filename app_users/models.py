@@ -1,18 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 import uuid
 
 class User(AbstractUser):
-    id = models.UUIDField( 
-         primary_key = True, 
-         default = uuid.uuid4, 
-         editable = False)
-    
-    
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+
     def __str__(self):
-        return str(self.username)
-    
-    
+        return str(self.email)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(max_length=500, blank=True, null=True)
@@ -21,7 +20,6 @@ class Profile(models.Model):
     postal_code = models.CharField(max_length=6, blank=True, null=True)
     country = models.CharField(max_length=200, blank=True, null=True)
     telephone = models.IntegerField(blank=True, null=True)
-    
-    
+
     def __str__(self):
         return str(self.email)
