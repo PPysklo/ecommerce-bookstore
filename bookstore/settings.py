@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'app_books.context_processors.tags_processor',
+                'app_books.context_processors.uncompleted_orders_processor',
             ],
         },
     },

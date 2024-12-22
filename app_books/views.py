@@ -20,7 +20,8 @@ def books_list(request):
     books = Books.objects.all()
     tags = Tag.objects.all()
     category_tag = None
-    
+
+
     if request.GET.get('category'):
         category_name = request.GET['category']
 
@@ -134,15 +135,15 @@ def processOrder(request):
                     )
                 else:
                     return JsonResponse({"error": "Error"})
-
+                
+                order.complete = True
                 order.save()
+
             except ValidationError as e:
                 messages.error(request, str(e))
-                return JsonResponse({'error': str(e)}, status=400)
-        else:
-            return JsonResponse({"error": "Total mismatch"}, status=400)
+                
     else:
         messages.error(request, 'You are not logged in!')
         return JsonResponse("You are not logged in!", safe=False)
 
-    return JsonResponse("Payment submitted", safe=False)
+    return JsonResponse({"message": "Payment submitted"}, safe=False)

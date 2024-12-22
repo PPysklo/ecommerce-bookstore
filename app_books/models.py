@@ -54,14 +54,8 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add = True)
     complete = models.BooleanField(default= False)
     transaction_id = models.CharField(max_length=100, null=True)
-    
-    class Meta:
-        permissions = [
-            ('can_change_order', 'Can change order'),
-            ('can_delete_order', 'Can delete order'),
-            ('can_view_order', 'Can view order'),
-        ]
-    
+    is_fulfilled = models.BooleanField(default=False)  
+
     def __str__(self):
         return str(self.id)
     
@@ -94,16 +88,9 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
-    class Meta:
-        permissions = [
-            ('can_add_order_item', 'Can add order item'),
-            ('can_change_order_item', 'Can change order item'),
-            ('can_delete_order_item', 'Can delete order item'),
-            ('can_view_order_item', 'Can view order item'),
-        ]
     
     def __str__(self):
-        return f"Numer zamówienia: {str(self.order.id)}"
+        return f"Numer zamówienia: {str(self.order)}"
 
     @property
     def get_total(self):
@@ -123,14 +110,6 @@ class ShippingAddress(models.Model):
     postal_code = models.CharField(max_length=200, null = True)
     telephone = models.CharField(max_length=200, null = True)
     date_added = models.DateTimeField(auto_now_add = True)
-
-    class Meta:
-        permissions = [
-            ('can_add_shipping_address', 'Can add shipping address'),
-            ('can_change_shipping_address', 'Can change shipping address'),
-            ('can_delete_shipping_address', 'Can delete shipping address'),
-            ('can_view_shipping_address', 'Can view shipping address'),
-        ]
 
     def __str__(self):
         return f"{self.order}----{self.address}"
