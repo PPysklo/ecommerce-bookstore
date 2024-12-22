@@ -8,20 +8,20 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     
-    list_display = ('id', 'customer', 'complete', 'transaction_id', 'order_date')
+    list_display = ('id', 'is_fulfilled', 'customer', 'transaction_id', 'order_date')
     list_filter = ('complete', 'order_date')
     inlines = [OrderItemInline]
 
-    actions = ['confirm_completion', 'ship_order']
+    actions = ['is_fulfilled', 'ship_order']
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         return qs.exclude(transaction_id__isnull=True)
 
-    def confirm_completion(self, request, queryset):
-        queryset.update(complete=True)
+    def is_fulfilled(self, request, queryset):
+        queryset.update(is_fulfilled=True)
         self.message_user(request, "Selected orders have been marked as complete.")
-    confirm_completion.short_description = "Confirm completion of selected orders"
+    is_fulfilled.short_description = "Mark selected orders as complete"
 
     def ship_order(self, request, queryset):
         queryset.update(shipped=True)

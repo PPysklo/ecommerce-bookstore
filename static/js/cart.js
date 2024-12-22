@@ -103,7 +103,7 @@ function submitFormData(){
     })
 }
 
-payBtn.addEventListener('click', function(e){
+payBtn?.addEventListener('click', function(e){
     submitFormData()
 })
 
@@ -112,7 +112,6 @@ window.onload = function() {
 
     if (errorMessage) {
         Swal.fire({
-            position: "center",
             icon: 'info',
             html: errorMessage.replace(/\n/g, '<br>'),
             showConfirmButton: true,

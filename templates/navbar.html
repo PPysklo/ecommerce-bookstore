@@ -30,25 +30,16 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-            <i class="bi bi-list text-light fs-4"></i> <!-- Ikona hamburgera -->
+            <i class="bi bi-list text-light fs-4"></i> 
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
-                <li class="nav-item text-center mx-2 mx-lg-1">
-                    <a class="nav-link" href="#!" hidden>
-                        <div>
-                            <i class="bi bi-envelope fs-4 mb-1"></i> <!-- Ikona koperty -->
-                            <span class="badge rounded-pill badge-notification bg-dark">11</span>
-                        </div>
-                        Link
-                    </a>
-                </li>
                 <li class="nav-item dropdown text-center mx-2 mx-lg-1">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="text-center"> <!-- Wyśrodkowanie ikony -->
-                            <i class="bi bi-book fs-4 mb-1"></i> <!-- Ikona książki -->
+                        <div class="text-center"> 
+                            <i class="bi bi-book fs-4 mb-1"></i> 
                         </div>
                         Kategorie
                     </a>
@@ -66,6 +57,18 @@
                         
                     </ul>
                 </li>
+
+                {% if user.groups.get.name == 'Order Manager' or user.is_superuser %}
+                <li class="nav-item text-center mx-2 mx-lg-1">
+                    <a class="nav-link" href="{% url 'admin:index' %}" >
+                        <div>
+                            <i class="bi bi-border-style fs-4 mb-1"></i> 
+                            <span class="badge rounded-pill badge-notification bg-dark">{{uncompleted_orders_count}}</span>
+                        </div>
+                        Panel administracyjny
+                    </a>
+                </li>
+                {% endif %}
             </ul>
 
             <!-- Search form -->
