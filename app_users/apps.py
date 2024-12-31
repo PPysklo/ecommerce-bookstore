@@ -1,4 +1,3 @@
-# filepath: /c:/Users/Piotr/Desktop/Python/Inzynierka/bookstore/app_users/apps.py
 from django.apps import AppConfig
 
 
@@ -7,4 +6,5 @@ class AppUsersConfig(AppConfig):
     name = 'app_users'
     verbose_name = "Użytkownicy"
 
-    
+    def ready(self):
+        import app_users.signals

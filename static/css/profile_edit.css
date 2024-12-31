@@ -1,87 +1,92 @@
 body {
-    background: #f3bef5 !important;
-    min-width: 100%;
-    min-height: 100%;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-  
-  .profile-edit {
-    background-color: #f3bef5;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  .profile-title {
-    font-size: 2rem;
-    color: #6f42c1;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
+  background: #e2e8f0 !important; /* Subtelny szaro-niebieski */
+  min-width: 100%;
+  min-height: 100%;
+}
 
-  .field-name{
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
 
-  label {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #6f42c1;
-    border-radius: 5px;
-    background-color: rgba(243, 190, 245, 0.8); /* Delikatne przyciemnienie */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  input:focus, select:focus {
-    border-color: #6f42c1;
-    outline: none;
-    box-shadow: 0 0 5px rgba(111, 66, 193, 0.5);
-  }
-  
-  button {
-    margin-top: 1rem !important;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-success {
-    background-color: #a728a3 !important;
-    color: #fff;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-success:hover {
-    background-color: #821d7e !important;
-  }
-  
-  .btn-secondary {
-    background-color: #6f42c1 !important;
-    color: #fff !important;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #54368f !important;
-  }
-  
+.profile-edit {
+  background-color: #cbd5e0; /* Subtelny szaro-niebieski */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-title {
+  font-size: 2rem;
+  color: #2b6cb0; /* Niebieski kolor tekstu */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.field-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #2b6cb0; /* Niebieski kolor ramki */
+  border-radius: 5px;
+  background-color: #f7fafc; /* Jasny szaro-niebieski */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus {
+  border-color: #2b6cb0; /* Niebieskie podświetlenie po kliknięciu */
+  outline: none;
+  box-shadow: 0 0 5px rgba(43, 108, 176, 0.5); /* Subtelne niebieskie podświetlenie */
+}
+
+button {
+  margin-top: 1rem !important;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Przycisk sukcesu */
+.btn-success {
+  background-color: #5a67d8 !important; /* Fioletowo-niebieski */
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #4c51bf !important; /* Jaśniejszy odcień przy hover */
+}
+
+/* Przycisk secondary */
+.btn-secondary {
+  background-color: #2b6cb0 !important; /* Niebieski */
+  color: #fff !important;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #1d4e80 !important; /* Ciemniejszy niebieski przy hover */
+}
+
+.form-control{
+  margin-top: 1rem;
+}

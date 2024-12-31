@@ -1,77 +1,84 @@
 .btn {
-    padding: .45rem 1.5rem .35rem;
-  }
-  
-.gradient-custom {
-  /* fallback for old browsers */
-  background: #c471f5;
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgb(193, 102, 246), rgba(250, 113, 205, 1));
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
-}
-
-.navbar-brand img {
-  height: 100px; /* Ustaw wysokość logo na 30px, aby pasowało do ikon */
-  width: auto; /* Ustaw szerokość na auto, aby zachować proporcje */
-}
-
-
-.navbar {
-  padding: 0.25rem 1rem; /* Zmniejszenie paddingu w navbarze */
-}
-
-.dropdown-menu {
-  display: none; /* Ukryj domyślnie */
-  opacity: 0; /* Ustaw przezroczystość na 0 */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Dodaj przejście */
-  transform: translateY(-10px); /* Przesunięcie w górę */
-  padding-top: 20px;
-}
-
-.dropdown.show .dropdown-menu {
-  display: block; /* Pokaż menu po dodaniu klasy show */
-  opacity: 1; /* Ustaw przezroczystość na 1 */
-  transform: translateY(0); /* Przywróć do normalnej pozycji */
-}
-
-.btn-search {
-  background-color: #6f42c1; /* Kolor tła */
+  padding: .45rem 1.5rem .35rem;
+  background-color: #2b6cb0; /* Nowy kolor tła przycisku */
   color: white; /* Kolor tekstu */
   border: none; /* Bez obramowania */
   transition: background-color 0.3s ease; /* Efekt przejścia dla koloru tła */
 }
 
+.btn:hover {
+  background-color: #5d7ca1 !important;
+}
+
+.gradient-custom {
+/* fallback for old browsers */
+background: #cbd5e0; /* Jasnoszary, dopasowany do ogólnego motywu */
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to left, #a9bed4, #2b6cb0); /* Szaro-niebieski gradient */
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to left, #a9bed4, #2b6cb0); /* Szaro-niebieski gradient */
+}
+
+.navbar-brand img {
+height: 100px; /* Ustaw wysokość logo na 30px, aby pasowało do ikon */
+width: auto; /* Ustaw szerokość na auto, aby zachować proporcje */
+}
+
+.navbar {
+padding: 0.25rem 1rem; /* Zmniejszenie paddingu w navbarze */
+}
+
+.dropdown-menu {
+display: none; /* Ukryj domyślnie */
+opacity: 0; /* Ustaw przezroczystość na 0 */
+transition: opacity 0.3s ease, transform 0.3s ease; /* Dodaj przejście */
+transform: translateY(-10px); /* Przesunięcie w górę */
+padding-top: 20px;
+}
+
+.dropdown.show .dropdown-menu {
+display: block; /* Pokaż menu po dodaniu klasy show */
+opacity: 1; /* Ustaw przezroczystość na 1 */
+transform: translateY(0); /* Przywróć do normalnej pozycji */
+}
+
+.btn-search {
+background-color: #2b6cb0; /* Kolor tła */
+color: white; /* Kolor tekstu */
+border: none; /* Bez obramowania */
+transition: background-color 0.3s ease; /* Efekt przejścia dla koloru tła */
+}
+
 .btn-search:hover {
-  background-color: #9c40de; /* Kolor tła po najechaniu */
+background-color: #2c5282; /* Kolor tła po najechaniu */
 }
 
 .search-form {
-  max-width: 550px; /* Ustaw szerokość paska wyszukiwania (możesz dostosować wartość) */
+max-width: 550px; /* Ustaw szerokość paska wyszukiwania (możesz dostosować wartość) */
 }
 
 .login-links{
-  min-width: 217px;
+min-width: 217px;
 }
 
 .dropdown-item {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: #6f42c1;
-  background-color: #f3bef5;
-  border: 1px solid #6f42c1;
-  border-radius: 0.25rem;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+display: inline-block;
+padding: 0.5rem 1rem;
+font-size: 1rem;
+color: #2c5282; /* Kolor tekstu */
+background-color: #f3bef5;
+border: 1px solid #2c5282; /* Border w odcieniu niebieskim */
+border-radius: 0.25rem;
+text-align: center;
+cursor: pointer;
+text-decoration: none;
+transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropdown-item:hover {
-  background-color: #6f42c1;
-  color: #ffffff;
-  border-radius: 0.35rem;
+background-color: #2b6cb0; /* Kolor tła na hover */
+color: #ffffff; /* Kolor tekstu na hover */
+border-radius: 0.35rem;
 }

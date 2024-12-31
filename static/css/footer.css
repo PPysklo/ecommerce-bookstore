@@ -1,10 +1,8 @@
 .content {
-    flex: 1; 
+    flex: 1;
     padding: 20px;
-    color: black !important;
+    color: #2d3748 !important; /* Zmieniono kolor tekstu na ciemniejszy odcień szarości */
     margin-bottom: -100px;
-    
-
 }
 
 html, body {
@@ -12,11 +10,11 @@ html, body {
     padding: 0; /* Usunięcie domyślnych odstępów */
     min-width: 100%; /* Szerokość na 100% */
     min-height: 100%; /* Wysokość na 100% */
+    background-color: #e2e8f0; /* Ustawiono jasnoszare tło, jak w drugim kodzie */
 }
 
-
 .footer {
-    color: #b97c7c;
+    color: #2d3748; /* Ciemniejszy kolor tekstu w stopce */
     text-align: center;
     padding: 10px 20px;
     z-index: 900;
@@ -26,14 +24,14 @@ html, body {
 }
 
 .bg-body-tertiary {
-    background-color:  #e8b8d9 !important;
+    background-color: #dedef4 !important; /* Jasnoszare tło, pasujące do ogólnego motywu */
 }
 
 .footer-text {
-    color: #1c1919 !important;
+    color: #2d3748 !important; /* Ciemniejszy odcień tekstu */
 }
 
 .copyright-text{
-    color: #1c1919 !important;
-    background-color: rgba(0, 0, 0, 0.05);
+    color: #2d3748 !important; /* Ciemniejszy odcień tekstu */
+    background-color: rgba(0, 0, 0, 0.05); /* Subtelne tło */
 }

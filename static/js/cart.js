@@ -116,7 +116,7 @@ window.onload = function() {
             html: errorMessage.replace(/\n/g, '<br>'),
             showConfirmButton: true,
             color: 'White',
-            background: 'rgb(243, 144, 205)',
+            background: 'rgb(108, 120, 182)',
             showClass: {
                 popup: 'my-icon'
             },

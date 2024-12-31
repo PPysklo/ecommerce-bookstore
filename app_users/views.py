@@ -52,6 +52,7 @@ def loginRegister(request):
 
                 user = form.save(commit=False)
                 user.email = user.email.lower()
+                user.username = user.email
                 user.save()
 
                 messages.success(request, 'User account was created!')
@@ -77,14 +78,11 @@ def logOut(request):
 def profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
-    
-    # tags = Tag.objects.all()
-    orders = Order.objects.filter(customer=profile).prefetch_related('orderitem_set')
-    # orders = OrderItem.objects.filter(order__in=order)
-    
+
+    orders = Order.objects.filter(customer=profile, complete=True).prefetch_related('orderitem_set')
+
     context = {
         'profile': profile, 
-        # 'tags': tags,
         'orders': orders
     }
     

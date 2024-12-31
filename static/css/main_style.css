@@ -1,17 +1,18 @@
-body{
-  background: #f3bef5 !important;
-  min-width: 100%; /* Szerokość na 100% */
-  min-height: 100%; /* Wysokość na 100% */
+body {
+  background: #e2e8f0 !important;
+  min-width: 100%;
+  min-height: 100%;
 }
+
 .container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-  
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
 .section-title {
   font-size: 2rem;
-  color: #6f42c1;
+  color: #2c5282;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -19,122 +20,110 @@ body{
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem; /* Odstępy między kartami */
-  justify-content: center; /* Wyśrodkowanie w wierszu */
+  gap: 1rem;
+  justify-content: center;
 }
 
-/* Kolumny dla kart w pięciu kolumnach */
 .col-custom {
-  flex: 0 0 20%; /* Każda kolumna zajmuje 20% szerokości wiersza */
-  max-width: 20%; /* Maksymalna szerokość kolumny */
+  flex: 0 0 20%;
+  max-width: 20%;
   padding: 0.5rem;
 }
 
 @media (max-width: 1200px) {
   .col-custom {
-    flex: 0 0 25%; /* Na mniejszych ekranach zmienia się na cztery kolumny */
+    flex: 0 0 25%;
     max-width: 25%;
   }
 }
 
 @media (max-width: 992px) {
   .col-custom {
-    flex: 0 0 33.3333%; /* Na tabletach zmienia się na trzy kolumny */
+    flex: 0 0 33.3333%;
     max-width: 33.3333%;
   }
 }
 
 @media (max-width: 768px) {
   .col-custom {
-    flex: 0 0 50%; /* Na telefonach zmienia się na dwie kolumny */
+    flex: 0 0 50%;
     max-width: 50%;
   }
 }
 
 @media (max-width: 576px) {
   .col-custom {
-    flex: 0 0 100%; /* Na najmniejszych ekranach jedna kolumna */
+    flex: 0 0 100%;
     max-width: 100%;
   }
 }
 
-
-  
-/* Styl dla kart książek */
 .book-item {
-    background-color: rgb(243, 144, 205);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: center;
-    width: 100%; 
-    max-width: 300px; 
-    height: 470px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid #e0e0e0; 
-  }
-  
-/* Sekcja z miejscem na obraz */
-.book-image {
-    max-width: 200px ;
-    width: auto;
-    height: 220px; 
-    object-fit: cover;
-    border-radius: 8px;
+  background-color: #cbd5e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #a0aec0;
 }
 
-/* Stylowanie informacji o książce */
+.book-image {
+  max-width: 200px;
+  width: auto;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .book-info {
-    flex-grow: 1; /* Umożliwia rozciąganie sekcji informacji */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .book-title {
-font-size: 1.2rem;
-color: #6f42c1;
-margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  color: #2c5282;
+  margin-bottom: 0.3rem;
 }
 
 .book-author, .book-price {
-font-size: 1rem;
-color: #555;
+  font-size: 1rem;
+  color: #2d3748;
 }
 
-/* Przyciski wewnątrz kart */
 .btn {
-padding: .45rem 1.0rem .35rem;
+  padding: 0.45rem 1rem 0.35rem;
 }
 
-
-/* Styl dla szczegółowego widoku książki */
 .book-detail {
-  background-color: #f3bef5; /* Zastosowanie koloru tła */
+  background-color: #cbd5e0;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Sekcja obrazu w szczegółach */
 .book-image-detail {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
-/* Opis książki */
 .book-description {
   font-size: 1rem;
-  color: #555;
+  color: #2d3748;
   margin: 1rem 0;
 }
 
-/* Styl dla szczegółowego widoku profilu */
 .profile-detail {
-  background-color: #f3bef5;
+  background-color: #cbd5e0;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -143,13 +132,13 @@ padding: .45rem 1.0rem .35rem;
 
 .profile-title {
   font-size: 3rem;
-  color: #b242c1;
+  color: #2b6cb0;
   margin-bottom: 1rem;
 }
 
 .profile-info p {
   font-size: 1.3rem;
-  color: #555;
+  color: #2d3748;
   margin: 0.5rem 0;
   padding-top: 1rem;
 }
@@ -157,7 +146,7 @@ padding: .45rem 1.0rem .35rem;
 #btn-edit {
   max-width: 15rem;
   margin-top: 3rem;
-  background-color: #a842c1;
+  background-color: #2b6cb0;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -172,7 +161,7 @@ padding: .45rem 1.0rem .35rem;
 
 .mailbox-title {
   font-size: 2rem;
-  color: #4a4a4a;
+  color: #2c5282;
   margin-bottom: 1rem;
 }
 
@@ -183,7 +172,7 @@ padding: .45rem 1.0rem .35rem;
 
 .order-item {
   padding: 0.5rem 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #a0aec0;
 }
 
 .order-item:last-child {
@@ -200,36 +189,30 @@ padding: .45rem 1.0rem .35rem;
   flex-direction: column;
 }
 
-/* Przyciski */
 .btn {
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
 }
 
 .btn-primary {
-  background-color: #875cd6;
+  background-color: #2b6cb0;
   color: #fff;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
-  background-color: #5a3796;
-}
 
 .book-list {
-  margin-bottom: 100px; /* Dodatkowy odstęp na paginację */
+  margin-bottom: 100px;
 }
 
-
-#empty-his{
+#empty-his {
   margin-top: 2rem;
   text-align: center;
-  color: black; /* Stonowany różowy odcień pasujący do stylu */
-  font-size: 1.0rem;
+  color: #2c5282;
+  font-size: 1rem;
   font-weight: bold;
-  background-color: #f3bef5; /* Kolor tła */
+  background-color: #cbd5e0;
   padding: 1rem;
-
 }
