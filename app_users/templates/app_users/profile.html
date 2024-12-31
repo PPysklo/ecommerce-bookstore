@@ -23,6 +23,7 @@
                     <h2 class="mailbox-title">Twoje zamówienia</h2>
                       <div class="mailbox">
                         <ul class="order-list">
+                          {% if orders %}
                           {% for order in orders %}
                             {% if order.orderitem_set.all and order.transaction_id %}
                               <li class="order-item">
@@ -38,12 +39,12 @@
                                     W trakcie realizacji
                                     {% endif %}
                               </li>
-                              {% else %}
-                              <li id="empty-his">Brak historii zamówień</li>
                               {% endif %}
                           {% endfor %}
+                          {% else %}
+                          <li id="empty-his">Brak historii zamówień</li>
+                          {% endif %}
                       </ul>
-                      
                       </div>
                   </div>
               </div>

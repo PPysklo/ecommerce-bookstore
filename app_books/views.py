@@ -34,7 +34,7 @@ def books_list(request):
         books, search_query = search_thing(query, books)
 
     
-    custom_range, books = paginateBooks(request, books, 12)
+    custom_range, books = paginateBooks(request, books, 6)
     
     if request.user.is_authenticated:
         customer = request.user.profile

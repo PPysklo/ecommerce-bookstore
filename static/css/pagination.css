@@ -16,21 +16,35 @@
     display: inline;
 }
 
+.pagination a {
+    background-color: #95a8e5; /* Subtelny różowy jako tło */
+    color: #2c5282; /* Niebieski kolor tekstu, dopasowany do reszty */
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 .pagination a:hover {
-    background-color: #fff;
-    color: #ae7fce;
+    background-color: #cbd5e0; /* Delikatne tło po najechaniu */
+    color: #5a3796; /* Ciemniejszy odcień fioletu po najechaniu */
 }
 
 /* Aktywna strona */
-.pagination .page-link.active{
+.pagination .page-link.active {
     font-weight: bold; /* Pogrubienie tekstu */
-    border: 1px solid #5a3796; /* Obramowanie */
+    border: 1px solid #373f96; /* Ciemniejszy odcień fioletu */
+    background-color: #2b6cb0; /* Niebieskie tło dla aktywnej strony */
+    color: #fff; /* Biały tekst dla aktywnej strony */
     cursor: default; /* Wyłączenie wskazania linku */
     pointer-events: none; /* Wyłączenie klikalności */
 }
 
-.page-link{
-    background: rgba(164, 65, 159, 0.7);
-    color: #fff; /* Kolor tekstu dla aktywnej strony */
+.page-link {
+    background: rgba(65, 78, 164, 0.7); /* Delikatny fioletowy odcień */
+    color: #fff; /* Biały kolor tekstu dla nieaktywnych stron */
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

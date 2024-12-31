@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'app_books.context_processors.tags_processor',
                 'app_books.context_processors.uncompleted_orders_processor',
+                'app_books.context_processors.cart_items_processor',
             ],
         },
     },
@@ -146,6 +147,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'app_users.User'
 
 JAZZMIN_UI_TWEAKS = {
-    "theme": "flatly",
-    "dark_mode_theme": "darkly",
+    "theme": "darkly",
+}
+
+JAZZMIN_SETTINGS = {
+
+    # Links to put along the top menu
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home page",  "url": "/"},
+    ],
 }
