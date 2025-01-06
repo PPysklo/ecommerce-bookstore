@@ -42,16 +42,15 @@
 
 {% for message in messages %}
     {% if message.tags == 'info' %}
-        <!-- sweetalert js -->
         <script>
-            var m = "Wylogowano";
+            var m = "<h2>Wylogowano</h2>";
             Swal.fire({
             position: "centre",
             icon: 'success',
-            text: m,
+            title: m,
             showConfirmButton: false,
-            color: 'White',
-            background: 'None',
+            color: 'Black',
+            background: 'White',
             timer: 1000,
             showClass: {
                         popup: 'my-icon'                     
@@ -60,14 +59,14 @@
         </script> 
     {% elif message.tags == 'success'%}
         <script>
-            var m = "Pomyślnie zalogowano";
+            var m = "<h2>Pomyślnie zalogowano</h2>";
             Swal.fire({
             position: "centre",
             icon: "success",
             title: m,
             showConfirmButton: false,
-            color: 'White',
-            background: "None",
+            color: 'Black',
+            background: "White",
             timer: 1000,
             showClass: {
                         popup: 'my-icon'                     
@@ -92,7 +91,6 @@
                 popup: 'my-icon'
             },
         });
-        // Usuwamy komunikat z localStorage po jego wyświetleniu
         localStorage.removeItem('completed');
     }
 </script>

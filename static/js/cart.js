@@ -87,7 +87,7 @@ function submitFormData(){
             console.log(data.error);
             if (data.error === 'Error') {
                 localStorage.setItem('orderError', 'Aby dokończyć zamówienie uzupełnij dane profilu');
-            } else if (data.error.includes('Nie wystarczające stany magazynowe dla')) {
+            } else if (data.error.includes('stany magazynowe dla')) {
                 localStorage.setItem('orderError', data.error);
             }
             window.location.reload();
