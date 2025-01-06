@@ -34,7 +34,7 @@ def books_list(request):
         books, search_query = search_thing(query, books)
 
     
-    custom_range, books = paginateBooks(request, books, 6)
+    custom_range, books = paginateBooks(request, books, 12)
     
     if request.user.is_authenticated:
         customer = request.user.profile
@@ -116,7 +116,7 @@ def processOrder(request):
                     except ValidationError as e:
                         missing_books.append(item.book.title)
                 if missing_books:
-                    error_message = "Nie wystarczające stany magazynowe dla:\n\n " + "\n".join(missing_books)
+                    error_message = "Niewystarczające stany magazynowe dla:\n\n " + "\n".join(missing_books)
 
                     return JsonResponse({'error': error_message , "missing_books": missing_books}, status=400)
                 for item in order.orderitem_set.all():

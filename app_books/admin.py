@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Books
+from django import forms
+from .models import Order, OrderItem, Books, Tag
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -8,7 +9,7 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     
-    list_display = ('id', 'is_fulfilled', 'customer', 'transaction_id', 'order_date')
+    list_display = ('__str__', 'id', 'is_fulfilled', 'customer', 'transaction_id', 'order_date')
     list_filter = ('complete', 'order_date')
     inlines = [OrderItemInline]
 
@@ -27,6 +28,12 @@ class OrderAdmin(admin.ModelAdmin):
         queryset.update(shipped=True)
         self.message_user(request, "Selected orders have been shipped.")
     ship_order.short_description = "Ship selected orders"
+    
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if 'complete' in form.base_fields:
+            form.base_fields['complete'].widget = forms.HiddenInput()
+        return form
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
@@ -35,3 +42,7 @@ class OrderItemAdmin(admin.ModelAdmin):
 @admin.register(Books)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'price', 'stock')
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)

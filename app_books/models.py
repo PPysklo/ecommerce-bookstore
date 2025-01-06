@@ -57,7 +57,7 @@ class Order(models.Model):
     is_fulfilled = models.BooleanField(default=False)  
 
     def __str__(self):
-        return str(self.id)
+        return f"Order: {str(self.id)}"
     
     @property
     def shipping(self):
