@@ -41,6 +41,9 @@ create_requirements.bat
 .idea/**/gradle.xml
 .idea/**/libraries
 
+# Secrets file
+email_secrets.py
+
 # File-based project format
 *.iws
 
