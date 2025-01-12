@@ -7,6 +7,7 @@ class AppBooksConfig(AppConfig):
     verbose_name = "Zamówienia"
 
     def ready(self):
+        import app_books.signals
         post_migrate.connect(self.create_order_manager_group, sender=self)
 
     @staticmethod

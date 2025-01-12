@@ -6,7 +6,7 @@
 <body>
   <div class="cont">
     <div class="form sign-in">
-      <a href="javascript:history.back()" class="back-button">Powrót</a>
+      <a href="{% url 'app_books:books-list' %}" class="back-button">Powrót</a>
       <h2>Zaloguj</h2>
       <form method='POST'>
         {% csrf_token %}
@@ -23,8 +23,10 @@
                 {% for message in messages %}
                     <p class="message">{{ message }}</p>
                 {% endfor %}
+
             </div>
-        {% endif %}
+            {% endif %}
+            <p class="reset-password-link"><a href="{% url 'reset_password' %}">Zapomniałeś hasła? Zresetuj je tutaj.</a></p>
       <button class="submit" type="submit" value="login"><input type="hidden" name="login">Zaloguj</button>
     </form>
     
@@ -49,8 +51,7 @@
         <h2>Zarejestruj</h2>
         <form method='POST'>
             {% csrf_token %}
-            
-            <!-- Wyświetlanie błędów formularza -->
+
             {% if form.non_field_errors %}
                 <div class="error-message">
                     {{ form.non_field_errors }}

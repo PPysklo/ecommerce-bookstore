@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktualizacja statusu zamówienia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .order-item {
+            margin-bottom: 20px;
+        }
+        .order-item img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+        .order-item-details {
+            font-weight: bold;
+        }
+        .order-item-price {
+            margin-left: 10px;
+        }
+        .total-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aktualizacja statusu zamówienia</h1>
+        <p>Witaj {{ customer.user.username }},</p>
+        <p>Twoje zamówienie o numerze {{ order.id }} zmieniło status na: {{ order.get_status_display }}</p>
+        <h2>Elementy zamówienia:</h2>
+        <ul>
+            {% for item in order_items %}
+                <li class="order-item">
+                    <div class="order-item-details">
+                        {{ item.book.title }} - Ilość: {{ item.quantity }}
+                    </div>
+                    <div class="order-item-price">
+                        Cena jednostkowa: {{ item.book.price }} PLN
+                    </div>
+                    <div class="order-item-price">
+                        Cena całkowita: {{ item.get_total }} PLN
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <p class="total-price">Łączna cena zamówienia: {{ order.get_cart_total }} PLN</p>
+        <p>Jeśli masz jakiekolwiek pytania, skontaktuj się z nami.</p>
+        <p>Pozdrawiamy,<br>Zespół naszej księgarni</p>
+        <div class="footer">
+            <p>&copy; 2025 Nasza Księgarnia. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </div>
+</body>
+</html>

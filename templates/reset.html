@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Wprowadź nowe hasło</h3>
+                </div>
+                <div class="card-body">
+                    <p>Proszę wprowadź nowe hasło dwukrotnie, abyśmy mogli zweryfikować, czy wpisałeś je poprawnie.</p>
+                    <p>Upewnij się, że nowe hasło spełnia następujące wymagania:</p>
+                    <ul>
+                        <li>Hasło powinno mieć co najmniej 8 znaków.</li>
+                        <li>Hasło powinno zawierać co najmniej jedną wielką literę.</li>
+                        <li>Hasło powinno zawierać co najmniej jedną małą literę.</li>
+                        <li>Hasło powinno zawierać co najmniej jedną cyfrę.</li>
+                    </ul>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.new_password1.id_for_label }}">Nowe hasło</label>
+                            {{ form.new_password1 }}
+                            {% if form.new_password1.errors %}
+                                <div class="error-message">
+                                    {{ form.new_password1.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.new_password2.id_for_label }}">Potwierdź nowe hasło</label>
+                            {{ form.new_password2 }}
+                            {% if form.new_password2.errors %}
+                                <div class="error-message">
+                                    {{ form.new_password2.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Prześlij</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
