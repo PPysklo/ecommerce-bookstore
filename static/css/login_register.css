@@ -330,3 +330,17 @@ button {
 .back-button:hover {
   color: #2c5282; /* Dopasowany kolor z main_style.css */
 }
+
+.reset-password-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reset-password-link a {
+  color: #06080b; /* Dopasowany kolor z main_style.css */
+  text-decoration: underline;
+}
+
+.reset-password-link a:hover {
+  color: #183a63; /* Dopasowany kolor z main_style.css */
+}

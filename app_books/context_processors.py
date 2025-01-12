@@ -7,7 +7,7 @@ def tags_processor(request):
 def cart_items_processor(request):
     if request.user.is_authenticated:
         customer = request.user.profile
-        order, created = Order.objects.get_or_create(customer=customer, complete = False)
+        order, created = Order.objects.get_or_create(customer=customer, complete = False, status='accepted')
         items = len(order.orderitem_set.all())
     else:
         items = []

@@ -16,7 +16,7 @@ def createProfile(sender, instance, created, **kwargs):
         )
         
         subject = 'Witamy na naszej stronie!'
-        html_content = render_to_string('app_users/welcome_email.html')
+        html_content = render_to_string('emails/welcome_email.html')
         text_content = strip_tags(html_content)
 
         from_email = settings.EMAIL_HOST_USER

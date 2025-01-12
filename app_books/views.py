@@ -33,24 +33,11 @@ def books_list(request):
     if query:
         books, search_query = search_thing(query, books)
 
-    
-    custom_range, books = paginateBooks(request, books, 12)
-    
-    if request.user.is_authenticated:
-        customer = request.user.profile
-        order, created = Order.objects.get_or_create(customer = customer, complete = False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_total':0 , 'get_cart_items':0, 'shipping': True}
-        cartItems = order['get_cart_items']
-        
+    custom_range, books = paginateBooks(request, books, 12)   
     
     context = {
         'books' : books,
         'tags' : tags,
-        'cartitems' : cartItems,
         'custom_range' : custom_range,
         'category_tag' : category_tag,
     }
@@ -63,7 +50,7 @@ def cart(request):
     
     if request.user.is_authenticated:
         customer = request.user.profile
-        order, created = Order.objects.get_or_create(customer=customer, complete = False)
+        order, created = Order.objects.get_or_create(customer=customer, complete = False, status='accepted')
         items = order.orderitem_set.all()
     else:
         items = []
@@ -81,7 +68,7 @@ def updateitem(request):
 
     customer = request.user.profile
     book = Books.objects.get(id=productId)
-    order, created = Order.objects.get_or_create(customer=customer, complete = False)
+    order, created = Order.objects.get_or_create(customer=customer, complete = False, status='accepted')
     
     orderItem, created = OrderItem.objects.get_or_create(order=order, book = book)
     
@@ -98,14 +85,13 @@ def updateitem(request):
 
 @csrf_exempt
 def processOrder(request):
-    transaction_id = datetime.datetime.now().timestamp()
+    transaction_id = datetime.datetime.now().timestamp() + len(request.user.profile.email)
     data = json.loads(request.body)
 
     if request.user.is_authenticated:
         customer = request.user.profile
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False, status='accepted')
         total = float(data['form']['total'])
-        order.transaction_id = transaction_id
 
         if total == order.get_cart_total:
             try:
@@ -115,13 +101,15 @@ def processOrder(request):
                         item.clean()
                     except ValidationError as e:
                         missing_books.append(item.book.title)
+
                 if missing_books:
                     error_message = "Niewystarczające stany magazynowe dla:\n\n " + "\n".join(missing_books)
-
                     return JsonResponse({'error': error_message , "missing_books": missing_books}, status=400)
+
                 for item in order.orderitem_set.all():
                     item.book.stock -= item.quantity
                     item.book.save()
+
                 messages.success(request, 'Order placed successfully!')
 
                 if all([customer.address, customer.city, customer.country, customer.postal_code]):
@@ -136,14 +124,18 @@ def processOrder(request):
                 else:
                     return JsonResponse({"error": "Error"})
                 
+                order.transaction_id = transaction_id
                 order.complete = True
                 order.save()
 
             except ValidationError as e:
                 messages.error(request, str(e))
-                
+
     else:
         messages.error(request, 'You are not logged in!')
         return JsonResponse("You are not logged in!", safe=False)
+
+    # Delete orders with empty transaction_id that are incomplete
+    Order.objects.filter(complete=False, transaction_id='').delete()
 
     return JsonResponse({"message": "Payment submitted"}, safe=False)

@@ -33,11 +33,8 @@
                                       Ilość: {{ item.quantity }}<br>
                                       Cena: {{ item.get_total }}<br>
                                   {% endfor %}
-                                  Status:{% if order.complete == 1 %} 
-                                    Wysłano
-                                    {% else %}
-                                    W trakcie realizacji
-                                    {% endif %}
+                                  Status: {{order.get_status_display}}
+
                               </li>
                               {% endif %}
                           {% endfor %}

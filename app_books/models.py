@@ -50,12 +50,21 @@ class Tag(models.Model):
         return self.name
 
 class Order(models.Model):
-    customer = models.ForeignKey(Profile, on_delete = models.SET_NULL, null = True, blank = True)
-    order_date = models.DateTimeField(auto_now_add = True)
+    STATUS_CHOICES = [
+            ('accepted', 'Przyjęte'),
+            ('in_progress', 'W trakcie realizacji'),
+            ('shipped', 'Wysłane'),
+            ('delivered', 'Dostarczone'),
+            ('cancelled', 'Anulowane'),
+        ]
+
+    customer = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True)
+    order_date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     complete = models.BooleanField(default= False)
     transaction_id = models.CharField(max_length=100, null=True)
-    is_fulfilled = models.BooleanField(default=False)  
-
+    is_fulfilled = models.BooleanField(default=False)
+    
     def __str__(self):
         return f"Order: {str(self.id)}"
     
