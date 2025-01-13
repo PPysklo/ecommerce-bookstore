@@ -12,7 +12,8 @@ from app_books.models import Tag, OrderItem, Order
 # from .models import User
 User = get_user_model()
 
-
+def statute(request):
+    return render(request, 'statute.html')
 
 def loginRegister(request):
     form = CustomUserCreationForm()

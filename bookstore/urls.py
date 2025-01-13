@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_books.urls')),
     path('users/', include('app_users.urls')),
-
     
     path('reset_password/', 
          auth_views.PasswordResetView.as_view(template_name='reset_password.html', html_email_template_name='emails/password_reset_email.html'), name='reset_password'),

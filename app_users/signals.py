@@ -2,11 +2,12 @@ from .models import Profile, User
 
 from django.db.models.signals import post_save, post_delete
 from django.conf import settings
-from django.core.mail import send_mail
+from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 
+@receiver(post_save, sender=User)
 def createProfile(sender, instance, created, **kwargs):
     if created:
         user = instance
@@ -27,7 +28,7 @@ def createProfile(sender, instance, created, **kwargs):
         msg.send()
         
 
-
+@receiver(post_save, sender=Profile)
 def updateUser(sender, instance, created, **kwargs):
     profile = instance
     user = profile.user
@@ -35,7 +36,7 @@ def updateUser(sender, instance, created, **kwargs):
         user.email = profile.email
         user.save()
         
-
+@receiver(post_delete, sender=Profile)
 def deleteUser(sender, instance, **kwargs):
     try:
         user = instance.user
@@ -44,6 +45,4 @@ def deleteUser(sender, instance, **kwargs):
         pass
     
 
-post_save.connect(createProfile, sender=User)
-post_save.connect(updateUser, sender=Profile)
-post_delete.connect(deleteUser, sender=Profile)
+
