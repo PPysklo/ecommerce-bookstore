@@ -6,13 +6,13 @@ This is a Django-based bookstore application that allows users to browse, search
 
 ## Features
 
-- User authentication (login, registration, logout)
-- Browse and search books
+- User authentication (login, registration, logout) and profile management
 - Shopping cart functionality
 - Order processing with stock validation
 - Admin panel for managing books, orders, and users
-
-
+- Browse books by categories and tags
+- Search for books
+- Order confirmation and status update emails
 
 # Getting Started with Bookstore
 
