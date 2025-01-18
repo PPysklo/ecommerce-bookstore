@@ -1,17 +1,32 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<div class="container">
+<style>
+    .statute-container {
+        font-size: 12px;
+        max-width: 800px; 
+        margin: 0 auto; 
+        padding: 20px;
+    }
+    .statute-section h2 {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .statute-section p {
+        font-size: 12px; 
+    }
+</style>
+<div class="statute-container">
     <h1>Regulamin Sklepu Internetowego</h1>
     
-    <div class="section">
+    <div class="statute-section">
         <h2>§1 Postanowienia ogólne</h2>
         <p>1. Niniejszy regulamin określa zasady korzystania z księgarni internetowej dostępnej pod adresem [adres strony internetowej].</p>
         <p>2. Właścicielem księgarni internetowej jest [nazwa firmy], z siedzibą w [adres firmy], NIP: [numer NIP], REGON: [numer REGON].</p>
         <p>3. Kontakt z księgarnią internetową możliwy jest pod adresem e-mail: [adres e-mail] oraz numerem telefonu: [numer telefonu].</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§2 Definicje</h2>
         <p>1. Klient – osoba fizyczna, osoba prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej, która dokonuje zamówienia w księgarni internetowej.</p>
         <p>2. Konsument – Klient będący osobą fizyczną, dokonujący zamówienia w celu niezwiązanym bezpośrednio z jego działalnością gospodarczą lub zawodową.</p>
@@ -20,14 +35,14 @@
         <p>5. Regulamin – niniejszy regulamin księgarni internetowej.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§3 Zasady korzystania z księgarni internetowej</h2>
         <p>1. Klient zobowiązany jest do korzystania z księgarni internetowej w sposób zgodny z przepisami prawa, postanowieniami Regulaminu oraz dobrymi obyczajami.</p>
         <p>2. Klient zobowiązany jest do podania prawdziwych danych osobowych podczas składania zamówienia.</p>
         <p>3. Klient zobowiązany jest do nieudostępniania swojego konta w księgarni internetowej osobom trzecim.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§4 Składanie zamówień</h2>
         <p>1. Zamówienia w księgarni internetowej można składać 24 godziny na dobę, 7 dni w tygodniu.</p>
         <p>2. W celu złożenia zamówienia Klient wybiera produkty dostępne w księgarni internetowej, dodaje je do koszyka, a następnie przechodzi do formularza zamówienia.</p>
@@ -35,21 +50,21 @@
         <p>4. Po złożeniu zamówienia Klient otrzymuje potwierdzenie przyjęcia zamówienia na podany adres e-mail.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§5 Płatności</h2>
         <p>1. Klient może dokonać płatności za zamówione produkty za pomocą dostępnych metod płatności, takich jak przelew bankowy, karta płatnicza, płatności online.</p>
         <p>2. Wszystkie ceny podane w księgarni internetowej są cenami brutto (zawierają podatek VAT).</p>
         <p>3. Sprzedawca zastrzega sobie prawo do zmiany cen produktów dostępnych w księgarni internetowej.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§6 Realizacja zamówień</h2>
         <p>1. Realizacja zamówienia rozpoczyna się po zaksięgowaniu płatności na koncie Sprzedawcy.</p>
         <p>2. Czas realizacji zamówienia wynosi od 1 do 5 dni roboczych, w zależności od dostępności produktów.</p>
         <p>3. Zamówione produkty są dostarczane na adres wskazany przez Klienta w formularzu zamówienia.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§7 Prawo odstąpienia od umowy</h2>
         <p>1. Konsument ma prawo odstąpić od umowy bez podania przyczyny w terminie 14 dni od dnia otrzymania zamówionych produktów.</p>
         <p>2. Aby skorzystać z prawa odstąpienia od umowy, Konsument musi poinformować Sprzedawcę o swojej decyzji w drodze jednoznacznego oświadczenia (np. pismo wysłane pocztą, faksem lub pocztą elektroniczną).</p>
@@ -57,22 +72,21 @@
         <p>4. Sprzedawca zwraca Konsumentowi wszystkie otrzymane od niego płatności, w tym koszty dostawy (z wyjątkiem dodatkowych kosztów wynikających z wybranego przez Konsumenta sposobu dostawy innego niż najtańszy zwykły sposób dostawy oferowany przez Sprzedawcę), niezwłocznie, a w każdym przypadku nie później niż 14 dni od dnia, w którym Sprzedawca został poinformowany o decyzji Konsumenta o wykonaniu prawa odstąpienia od umowy.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§8 Reklamacje</h2>
         <p>1. Klient ma prawo do złożenia reklamacji w przypadku stwierdzenia wad produktów lub niezgodności z zamówieniem.</p>
         <p>2. Reklamacje należy składać na adres e-mail: [adres e-mail] lub pisemnie na adres siedziby Sprzedawcy.</p>
-        <p>3. Reklamacja powinna zawierać dane Klienta, opis wady produktu oraz żądanie Klienta.</p>
-        <p>4. Sprzedawca rozpatruje reklamację w terminie 14 dni od dnia jej otrzymania i informuje Klienta o dalszym postępowaniu.</p>
+        <p>3. Sprzedawca rozpatruje reklamację w terminie 14 dni od dnia jej otrzymania i informuje Klienta o dalszym postępowaniu.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§9 Ochrona danych osobowych</h2>
         <p>1. Administratorem danych osobowych Klientów jest Sprzedawca.</p>
         <p>2. Dane osobowe Klientów są przetwarzane w celu realizacji zamówień oraz w celach marketingowych, zgodnie z obowiązującymi przepisami prawa.</p>
         <p>3. Klient ma prawo dostępu do swoich danych osobowych, ich poprawiania oraz żądania ich usunięcia.</p>
     </div>
 
-    <div class="section">
+    <div class="statute-section">
         <h2>§10 Postanowienia końcowe</h2>
         <p>1. Regulamin wchodzi w życie z dniem jego opublikowania na stronie internetowej księgarni.</p>
         <p>2. Sprzedawca zastrzega sobie prawo do zmiany Regulaminu. Zmiany Regulaminu wchodzą w życie z dniem ich opublikowania na stronie internetowej księgarni.</p>

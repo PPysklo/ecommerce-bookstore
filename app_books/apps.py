@@ -16,11 +16,8 @@ class AppBooksConfig(AppConfig):
         Group = apps.get_model('auth', 'Group')
         Permission = apps.get_model('auth', 'Permission')
 
-        # Tworzenie grupy
         order_manager_group, created = Group.objects.get_or_create(name='Order Manager')
-        
-        # Przypisywanie uprawnień
-        # print(Permission.objects.all())
+
         permissions = Permission.objects.filter(codename__in=[
             'change_order',
             'delete_order',

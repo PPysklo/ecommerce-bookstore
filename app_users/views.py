@@ -19,7 +19,7 @@ def loginRegister(request):
     form = CustomUserCreationForm()
     
     if request.method == "POST" and 'login' in request.POST:
-        page = 'login'
+
         if request.user.is_authenticated:
             return redirect('app_books:books-list')
 
@@ -42,14 +42,12 @@ def loginRegister(request):
         else:
             messages.error(request, 'Username or password is incorrect.')
                   
-        # else:
-        #     messages.error(request, 'Captcha')
     elif request.method == "POST" and 'register' in request.POST:
         
         if request.method == "POST":
             form = CustomUserCreationForm(request.POST)
-            # captcha = CaptchaForm(request.POST)
-            if form.is_valid(): #and captcha.is_valid():
+
+            if form.is_valid():
 
                 user = form.save(commit=False)
                 user.email = user.email.lower()
@@ -64,7 +62,7 @@ def loginRegister(request):
             else:
                 messages.success(request, 'An error has occurred during registration')
 
-    context = {'form': form} #,'captcha':captcha}
+    context = {'form': form}
             
     return render(request, 'app_users/login_register.html', context)
 
