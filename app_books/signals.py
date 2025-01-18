@@ -9,9 +9,10 @@ from django.utils.html import strip_tags
 
 @receiver(post_save, sender=Order)
 def send_order_confirmation_email(sender, instance, created, **kwargs):
-    if created and instance.status == 'accepted':
+
+    if instance.complete:
         customer = instance.customer
-        print(list(customer.order_set.all()))
+
         try:
             order_id = list(customer.order_set.all())[-2].id
         except:
