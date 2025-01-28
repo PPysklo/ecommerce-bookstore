@@ -10,7 +10,7 @@ from django.utils.html import strip_tags
 @receiver(post_save, sender=Order)
 def send_order_confirmation_email(sender, instance, created, **kwargs):
 
-    if instance.complete:
+    if instance.complete and instance.status == 'accepted':
         customer = instance.customer
 
         try:

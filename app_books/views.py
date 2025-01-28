@@ -135,7 +135,6 @@ def processOrder(request):
         messages.error(request, 'You are not logged in!')
         return JsonResponse("You are not logged in!", safe=False)
 
-    # Delete orders with empty transaction_id that are incomplete
     Order.objects.filter(complete=False, transaction_id='').delete()
 
     return JsonResponse({"message": "Payment submitted"}, safe=False)
