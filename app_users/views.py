@@ -102,7 +102,6 @@ def edit_profile(request, pk):
             profile = form.save(commit=False)
             profile.save()
 
-
         return redirect('app_users:profile')
 
     context = {'form': form, 'tags':tags}
