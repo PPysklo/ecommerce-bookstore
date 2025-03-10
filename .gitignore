@@ -3,8 +3,8 @@
 *.pot
 *.pyc
 __pycache__/
-app_books/__pycache__/
-app_users/__pycache__/
+app_books/__pycache__/*
+app_users/__pycache__/*
 db.sqlite3
 media
 create_requirements.bat

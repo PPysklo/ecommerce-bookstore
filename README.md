@@ -64,39 +64,64 @@ Open your browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000
 # Project Structure
 The project is organized as follows:
 
-bookstore: Contains the main application code.
-templates/: Stores HTML templates for the frontend.
-static/: Includes static files like CSS, JavaScript, and images.
-css/: Contains CSS files for styling.
-js/: Contains JavaScript files for interactivity.
-requirements.txt: Lists the Python dependencies for the project.
-manage.py: The Django project's management script.
+- bookstore: Contains the main application code.
+
+- templates/: Stores HTML templates for the frontend.
+
+- static/: Includes static files like CSS, JavaScript, and images.
+
+- css/: Contains CSS files for styling.
+
+- js/: Contains JavaScript files for interactivity.
+
+- requirements.txt: Lists the Python dependencies for the project.
+
+- manage.py: The Django project's management script.
 
 ```sh
 bookstore/
+├── .gitignore
+├── db.sqlite3
+├── email_secrets.py
+├── manage.py
+├── README.md
+├── requirements.txt
+├── __pycache__/
+│   ├── email_secrets.cpython-310.pyc
+│   ├── secrets.cpython-310.pyc
 ├── app_books/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
 │   ├── context_processors.py
 │   ├── models.py
+│   ├── signals.py
 │   ├── tests.py
 │   ├── urls.py
+│   ├── utils.py
 │   ├── views.py
+│   ├── __pycache__/
+│   ├── migrations/
 │   ├── templates/
 │   │   ├── app_books/
 │   │   │   ├── books_list.html
-│   │   │   ├── shooping_cart.html
+│   │   │   ├── shopping_cart.html
 │   │   │   ├── checkout.html
-│   │   ├── navbar.html
+│   │   │   ├── order_confirmation_email.html
+│   │   │   ├── order_status_update_email.html
+│   │   │   ├── welcome_email.html
 ├── app_users/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── forms.py
 │   ├── models.py
+│   ├── signals.py
 │   ├── tests.py
 │   ├── urls.py
 │   ├── views.py
+│   ├── __pycache__/
+│   ├── migrations/
 │   ├── templates/
 │   │   ├── app_users/
 │   │   │   ├── login_register.html
@@ -104,9 +129,11 @@ bookstore/
 │   │   │   ├── profile_edit.html
 ├── bookstore/
 │   ├── __init__.py
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   ├── wsgi.py
+├── media/
 ├── static/
 │   ├── css/
 │   │   ├── cart.css
@@ -115,12 +142,24 @@ bookstore/
 │   │   ├── main_style.css
 │   │   ├── navbar_style.css
 │   │   ├── paginations.css
-│   │   ├── profil_edit.css
+│   │   ├── profile_edit.css
 │   ├── js/
 │   │   ├── cart.js
 │   │   ├── footer_script.js
 │   │   ├── login_register.js
 │   │   ├── navbar_scripts.js 
+├── templates/
+│   ├── base.html
+│   ├── footer.html
+│   ├── index.html
+│   ├── navbar.html
+│   ├── pagination.html
+│   ├──reset_password_complete.html
+│   ├──reset_password_sent.html
+│   ├──reset_password.html
+│   ├──reset.html
+│   ├──shooping_cart.html
+│   ├──statute.html
 ├── manage.py
 ├── requirements.txt
 ```
