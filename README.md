@@ -12,6 +12,7 @@ This is a Django-based bookstore application that allows users to browse, search
 - Admin panel for managing books, orders, and users
 - Browse books by categories and tags
 - Search for books
+- User profiles with transaction history
 - Order confirmation and status update emails
 
 # Getting Started with Bookstore
@@ -20,7 +21,7 @@ Follow these steps to set up and run the Bookstore application:
 
 ## 1. Clone the Repository
 ```sh
-git clone https://github.com/yourusername/bookstore.git
+git clone https://github.com/PPysklo/bookstore.git
 cd bookstore
 ```
 
@@ -61,6 +62,18 @@ Open your browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000
 
 ---
 
+## Main page
+<img src="./resources/images/main_page.JPG">
+
+## Login/register page
+<img src="./resources/images/login_page.JPG">
+
+## Shopping cart page
+<img src="./resources/images/cart_page.JPG">
+
+## Profile/transaction history page
+<img src="./resources/images/profil_page.JPG">
+
 # Project Structure
 The project is organized as follows:
 
@@ -86,9 +99,6 @@ bookstore/
 ├── manage.py
 ├── README.md
 ├── requirements.txt
-├── __pycache__/
-│   ├── email_secrets.cpython-310.pyc
-│   ├── secrets.cpython-310.pyc
 ├── app_books/
 │   ├── __init__.py
 │   ├── admin.py
@@ -100,7 +110,6 @@ bookstore/
 │   ├── urls.py
 │   ├── utils.py
 │   ├── views.py
-│   ├── __pycache__/
 │   ├── migrations/
 │   ├── templates/
 │   │   ├── app_books/
@@ -120,7 +129,6 @@ bookstore/
 │   ├── tests.py
 │   ├── urls.py
 │   ├── views.py
-│   ├── __pycache__/
 │   ├── migrations/
 │   ├── templates/
 │   │   ├── app_users/
@@ -154,12 +162,12 @@ bookstore/
 │   ├── index.html
 │   ├── navbar.html
 │   ├── pagination.html
-│   ├──reset_password_complete.html
-│   ├──reset_password_sent.html
-│   ├──reset_password.html
-│   ├──reset.html
-│   ├──shooping_cart.html
-│   ├──statute.html
+│   ├── reset_password_complete.html
+│   ├── reset_password_sent.html
+│   ├── reset_password.html
+│   ├── reset.html
+│   ├── shooping_cart.html
+│   ├── statute.html
 ├── manage.py
 ├── requirements.txt
 ```
